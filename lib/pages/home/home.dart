@@ -1,9 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:home_page/molecules/project_card/project_card.dart';
+import 'package:home_page/services/project_service.dart';
+import 'package:home_page/models/project.dart';
 import 'package:home_page/pages/project_detail/project_detail.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
+
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  late Future<List<Project>> futureProjects;
+
+  @override
+  void initState() {
+    super.initState();
+    futureProjects = ProjectService().fetchProjects();
+  }
 
   void _navigateToProjectDetail(BuildContext context, String projectName) {
     Navigator.push(
@@ -27,18 +42,28 @@ class HomePage extends StatelessWidget {
             const SizedBox(height: 20),
             const Text('Project Overview', style: TextStyle(fontSize: 20)),
             Expanded(
-              child: ListView(
-                children: <Widget>[
-                  GestureDetector(
-                    onTap: () => _navigateToProjectDetail(context, 'Project 1'),
-                    child: const ProjectCard(projectName: 'Project 1', progress: 0.7),
-                  ),
-                  GestureDetector(
-                    onTap: () => _navigateToProjectDetail(context, 'Project 2'),
-                    child: const ProjectCard(projectName: 'Project 2', progress: 0.4),
-                  ),
-                  // 추가 프로젝트 카드들
-                ],
+              child: FutureBuilder<List<Project>>(
+                future: futureProjects,
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return Center(child: CircularProgressIndicator());
+                  } else if (snapshot.hasError) {
+                    return Center(child: Text('Error: ${snapshot.error}'));
+                  } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
+                    return Center(child: Text('No projects available'));
+                  } else {
+                    return ListView.builder(
+                      itemCount: snapshot.data!.length,
+                      itemBuilder: (context, index) {
+                        Project project = snapshot.data![index];
+                        return GestureDetector(
+                          onTap: () => _navigateToProjectDetail(context, project.name),
+                          child: ProjectCard(projectName: project.name, progress: project.progress),
+                        );
+                      },
+                    );
+                  }
+                },
               ),
             ),
           ],
