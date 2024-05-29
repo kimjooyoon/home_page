@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:home_page/pages/home/home.dart';  // 홈 페이지 임포트
+
 import 'package:home_page/atoms/button/button.dart';
 import 'package:home_page/atoms/input/input.dart';
 import 'package:home_page/molecules/password/password.dart';
+
+import 'package:home_page/pages/navigation/navigation_layout.dart';
 
 class LoginForm extends StatelessWidget {
   final TextEditingController emailController = TextEditingController();
@@ -29,7 +33,11 @@ class LoginForm extends StatelessWidget {
           text: 'Login',
           width: 340,
           onPressed: () {
-            // Handle login
+            // 로그인 버튼을 누르면 홈 페이지로 네비게이션
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => NavigationLayout(initialIndex: 0)),
+            );
           },
         ),
         const SizedBox(height: 16.0),

@@ -6,6 +6,7 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // AppBar를 사용하지 않습니다.
       body: Stack(
         fit: StackFit.expand,
         children: [
