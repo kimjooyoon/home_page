@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:home_page/pages/home/home.dart';
+import 'package:home_page/pages/login/login.dart';
 import 'package:home_page/pages/projects/projects.dart';
 
 class NavigationLayout extends StatefulWidget {
@@ -23,7 +24,8 @@ class _NavigationLayoutState extends State<NavigationLayout> {
   static List<Widget> _widgetOptions = <Widget>[
     HomePage(),
     ProjectsPage(),
-    // 다른 페이지들 추가 가능
+    LoginPage(),
+    // 추가 페이지들
   ];
 
   void _onItemTapped(int index) {
@@ -65,7 +67,12 @@ class _NavigationLayoutState extends State<NavigationLayout> {
               title: Text('Projects'),
               onTap: () => _onItemTapped(1),
             ),
-            // 필요한 경우 다른 네비게이션 아이템 추가
+            ListTile(
+              leading: Icon(Icons.login),
+              title: Text('Login'),
+              onTap: () => _onItemTapped(2),
+            ),
+            // 추가 네비게이션 아이템
           ],
         ),
       ),
