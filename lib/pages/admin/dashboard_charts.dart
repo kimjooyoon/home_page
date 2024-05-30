@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:home_page/molecules/charts/line_chart_molecule.dart';
-import 'package:home_page/services/mock_chart_data_provider.dart'; // Mock 데이터 제공자를 import
+import 'package:home_page/molecules/charts/bar_chart_molecule.dart';
+import 'package:home_page/molecules/charts/pie_chart_molecule.dart';
+import 'package:home_page/molecules/charts/scatter_chart_molecule.dart';
+import 'package:home_page/molecules/charts/radar_chart_molecule.dart';
+import 'package:home_page/services/mock_chart_data_provider.dart';
 
 class DashboardChartsPage extends StatelessWidget {
   const DashboardChartsPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final dataProvider =
-        MockChartDataProvider(); // 실제 데이터 제공자 대신 모의 데이터 제공자를 사용
+    final dataProvider = MockChartDataProvider();
 
     return Scaffold(
       appBar: AppBar(
@@ -16,33 +19,41 @@ class DashboardChartsPage extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+        child: ListView(
           children: [
-            const Text(
-              'Manage Dashboard Charts',
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            Card(
+              margin: const EdgeInsets.symmetric(vertical: 8.0),
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: LineChartMolecule(dataProvider: dataProvider),
+              ),
             ),
-            const SizedBox(height: 16),
-            Expanded(
-              child: ListView(
-                children: [
-                  Card(
-                    margin: const EdgeInsets.symmetric(vertical: 8.0),
-                    child: Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: LineChartMolecule(dataProvider: dataProvider),
-                    ),
-                  ),
-                  Card(
-                    margin: const EdgeInsets.symmetric(vertical: 8.0),
-                    child: Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: LineChartMolecule(dataProvider: dataProvider),
-                    ),
-                  ),
-                  // Add more chart molecules here
-                ],
+            Card(
+              margin: const EdgeInsets.symmetric(vertical: 8.0),
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: BarChartMolecule(dataProvider: dataProvider),
+              ),
+            ),
+            Card(
+              margin: const EdgeInsets.symmetric(vertical: 8.0),
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: PieChartMolecule(dataProvider: dataProvider),
+              ),
+            ),
+            Card(
+              margin: const EdgeInsets.symmetric(vertical: 8.0),
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: ScatterChartMolecule(dataProvider: dataProvider),
+              ),
+            ),
+            Card(
+              margin: const EdgeInsets.symmetric(vertical: 8.0),
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: RadarChartMolecule(dataProvider: dataProvider),
               ),
             ),
           ],
