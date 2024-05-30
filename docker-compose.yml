@@ -1,0 +1,6 @@
+version: '3.8'
+services:
+  flutter-web:
+    image: flutter-web-deploy
+    ports:
+      - "80:80"
