@@ -10,6 +10,8 @@ class AuthPage extends StatefulWidget {
 class _AuthPageState extends State<AuthPage>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
+  final double buttonHeight = 50.0; // 버튼 높이를 정의하는 변수
+  final double buttonWidth = 300.0; // 버튼 너비를 정의하는 변수
 
   @override
   void initState() {
@@ -75,6 +77,7 @@ class _AuthPageState extends State<AuthPage>
 
   Widget _buildLoginForm() {
     return Column(
+      mainAxisSize: MainAxisSize.min,
       children: [
         const VerticalSpacer(height: 16.0), // 탭과 폼 사이의 여백 추가
         TextField(
@@ -102,23 +105,59 @@ class _AuthPageState extends State<AuthPage>
           ),
         ),
         const VerticalSpacer(height: 32.0),
-        ElevatedButton(
-          onPressed: () {
-            Navigator.pushReplacementNamed(context, '/navigation');
+        Container(
+          width: buttonWidth,
+          height: buttonHeight,
+          child: ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.white, // 버튼 배경색
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(8.0),
+                side: BorderSide(color: Colors.grey), // 테두리 색상 및 두께
+              ),
+            ),
+            onPressed: () {
+              Navigator.pushReplacementNamed(context, '/navigation');
+            },
+            child: const Text(
+              'Login',
+              style: TextStyle(
+                color: Colors.black, // 텍스트 색상
+                fontFamily: 'Roboto',
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+          ),
+        ),
+        const VerticalSpacer(height: 16.0),
+        GestureDetector(
+          onTap: () {
+            // Google 로그인 로직
           },
-          child: const Text('Login'),
+          child: Container(
+            width: buttonWidth,
+            height: buttonHeight,
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage('assets/images/google_logo.png'),
+                fit: BoxFit.contain,
+              ),
+              borderRadius: BorderRadius.circular(8.0),
+              // 테두리 제거
+            ),
+          ),
         ),
       ],
     );
   }
 
-  // _buildSignUpForm() 메서드 수정
   Widget _buildSignUpForm() {
     final nameController = TextEditingController();
     final emailController = TextEditingController();
     final passwordController = TextEditingController();
 
     return Column(
+      mainAxisSize: MainAxisSize.min,
       children: [
         VerticalSpacer(height: 16.0), // 탭과 폼 사이의 여백 추가
         TextField(
@@ -161,15 +200,47 @@ class _AuthPageState extends State<AuthPage>
           ),
         ),
         VerticalSpacer(height: 32.0),
-        ElevatedButton(
-          onPressed: () {
-            // 회원가입 로직
-            // 서버와 통신하여 회원가입 처리
-            // 예:
-            // signUp(nameController.text, emailController.text, passwordController.text);
-            Navigator.pushReplacementNamed(context, '/navigation');
+        Container(
+          width: buttonWidth,
+          height: buttonHeight,
+          child: ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.white, // 버튼 배경색
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(8.0),
+                side: BorderSide(color: Colors.grey), // 테두리 색상 및 두께
+              ),
+            ),
+            onPressed: () {
+              Navigator.pushReplacementNamed(context, '/navigation');
+            },
+            child: const Text(
+              'Sign Up',
+              style: TextStyle(
+                color: Colors.black, // 텍스트 색상
+                fontFamily: 'Roboto',
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+          ),
+        ),
+        VerticalSpacer(height: 16.0),
+        GestureDetector(
+          onTap: () {
+            // Google 로그인 로직
           },
-          child: Text('Sign Up'),
+          child: Container(
+            width: buttonWidth,
+            height: buttonHeight,
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage('assets/images/google_logo.png'),
+                fit: BoxFit.contain,
+              ),
+              borderRadius: BorderRadius.circular(8.0),
+              // 테두리 제거
+            ),
+          ),
         ),
       ],
     );
