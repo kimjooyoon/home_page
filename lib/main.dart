@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:home_page/pages/navigation/navigation_layout.dart';
-import 'package:home_page/pages/login/login.dart';
+import 'package:home_page/pages/login/auth_page.dart';  // AuthPage를 사용합니다.
 
 void main() {
   runApp(MyApp());
@@ -14,9 +14,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      initialRoute: '/login',
+      initialRoute: '/auth',
       routes: {
-        '/login': (context) => LoginPage(),
+        '/auth': (context) => AuthPage(),
         '/navigation': (context) => NavigationLayout(),
       },
     );

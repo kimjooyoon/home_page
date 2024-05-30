@@ -23,13 +23,17 @@ class _HomePageState extends State<HomePage> {
   void _navigateToProjectDetail(BuildContext context, String projectName) {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => ProjectDetailPage(projectName: projectName)),
+      MaterialPageRoute(
+          builder: (context) => ProjectDetailPage(projectName: projectName)),
     );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('Home'),
+      ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -46,19 +50,22 @@ class _HomePageState extends State<HomePage> {
                 future: futureProjects,
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
-                    return Center(child: CircularProgressIndicator());
+                    return const Center(child: CircularProgressIndicator());
                   } else if (snapshot.hasError) {
-                    return Center(child: Text('Error: ${snapshot.error}'));
+                    return Center(child: Text('Something went wrong: ${snapshot.error}'));
                   } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-                    return Center(child: Text('No projects available'));
+                    return const Center(child: Text('No projects available'));
                   } else {
                     return ListView.builder(
                       itemCount: snapshot.data!.length,
                       itemBuilder: (context, index) {
                         Project project = snapshot.data![index];
                         return GestureDetector(
-                          onTap: () => _navigateToProjectDetail(context, project.name),
-                          child: ProjectCard(projectName: project.name, progress: project.progress),
+                          onTap: () =>
+                              _navigateToProjectDetail(context, project.name),
+                          child: ProjectCard(
+                              projectName: project.name,
+                              progress: project.progress),
                         );
                       },
                     );

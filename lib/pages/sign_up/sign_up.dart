@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 
 class SignUpPage extends StatelessWidget {
-  const SignUpPage({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,6 +33,7 @@ class SignUpPage extends StatelessWidget {
             ElevatedButton(
               onPressed: () {
                 // 회원가입 로직
+                Navigator.pushReplacementNamed(context, '/login');
               },
               child: const Text('Sign Up'),
             ),
