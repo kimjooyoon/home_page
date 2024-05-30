@@ -44,4 +44,11 @@ class AuthService {
       throw Exception('Failed to login');
     }
   }
+
+  Future<void> logout() async {
+    // 로그아웃 API 호출 (필요시)
+    // final response = await http.post(Uri.parse('$baseUrl/logout'));
+    // 세션 정리 로직 추가
+    // 예: SharedPreferences.clear();
+  }
 }

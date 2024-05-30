@@ -10,6 +10,7 @@ import 'package:home_page/pages/admin/customer_management.dart';
 import 'package:home_page/pages/admin/transaction_management.dart';
 import 'package:home_page/pages/admin/meeting_details.dart';
 import 'package:home_page/pages/admin/dashboard_charts.dart';
+import 'package:home_page/services/auth_service.dart';
 
 class NavigationLayout extends StatefulWidget {
   final int initialIndex;
@@ -49,6 +50,11 @@ class _NavigationLayoutState extends State<NavigationLayout> {
       _selectedIndex = index;
     });
     Navigator.pop(context); // Drawer를 닫기 위해 pop
+  }
+
+  void _logout() async {
+    await AuthService().logout();
+    Navigator.pushReplacementNamed(context, '/auth');
   }
 
   @override
@@ -130,6 +136,12 @@ class _NavigationLayoutState extends State<NavigationLayout> {
                 index: 10,
               ),
             ],
+            const Divider(),
+            ListTile(
+              leading: Icon(Icons.exit_to_app),
+              title: Text('Logout'),
+              onTap: _logout,
+            ),
           ],
         ),
       ),
