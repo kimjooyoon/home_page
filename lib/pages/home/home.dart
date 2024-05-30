@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:home_page/molecules/project_card/project_card.dart';
-import 'package:home_page/services/project_service.dart';
 import 'package:home_page/models/project.dart';
+import 'package:home_page/data/mock_projects.dart';
 import 'package:home_page/pages/project_detail/project_detail.dart';
 
 class HomePage extends StatefulWidget {
@@ -17,7 +17,7 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    futureProjects = ProjectService().fetchProjects();
+    futureProjects = Future.value(getMockProjects()); // Mock 데이터 사용
   }
 
   void _navigateToProjectDetail(BuildContext context, String projectName) {
@@ -31,9 +31,6 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Home'),
-      ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -50,11 +47,11 @@ class _HomePageState extends State<HomePage> {
                 future: futureProjects,
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
-                    return const Center(child: CircularProgressIndicator());
+                    return Center(child: CircularProgressIndicator());
                   } else if (snapshot.hasError) {
-                    return Center(child: Text('Something went wrong: ${snapshot.error}'));
+                    return Center(child: Text('Error: ${snapshot.error}'));
                   } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-                    return const Center(child: Text('No projects available'));
+                    return Center(child: Text('No projects available'));
                   } else {
                     return ListView.builder(
                       itemCount: snapshot.data!.length,
