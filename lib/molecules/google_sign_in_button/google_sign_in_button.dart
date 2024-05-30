@@ -20,11 +20,29 @@ class GoogleSignInButton extends StatelessWidget {
         width: buttonWidth,
         height: buttonHeight,
         decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage('assets/images/google_logo.png'),
-            fit: BoxFit.contain,
-          ),
+          color: Colors.white,
           borderRadius: BorderRadius.circular(8.0),
+          border: Border.all(color: Colors.grey),
+        ),
+        child: Center(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset(
+                'assets/images/google_logo.png',
+                height: 24,
+              ),
+              const SizedBox(width: 8),
+              Text(
+                'Continue with Google',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontFamily: 'Roboto',
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
