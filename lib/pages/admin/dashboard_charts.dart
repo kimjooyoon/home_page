@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:home_page/molecules/charts/line_chart_sample.dart'; // 경로 수정
+import 'package:home_page/molecules/charts/line_chart_molecule.dart';
+import 'package:home_page/services/mock_chart_data_provider.dart'; // Mock 데이터 제공자를 import
 
 class DashboardChartsPage extends StatelessWidget {
   const DashboardChartsPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final dataProvider =
+        MockChartDataProvider(); // 실제 데이터 제공자 대신 모의 데이터 제공자를 사용
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Dashboard Charts'),
@@ -21,37 +25,24 @@ class DashboardChartsPage extends StatelessWidget {
             ),
             const SizedBox(height: 16),
             Expanded(
-              child: ListView.builder(
-                itemCount: 10, // 임시 데이터 수
-                itemBuilder: (context, index) {
-                  return Card(
+              child: ListView(
+                children: [
+                  Card(
                     margin: const EdgeInsets.symmetric(vertical: 8.0),
                     child: Padding(
                       padding: const EdgeInsets.all(16.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Chart #$index',
-                            style: const TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          const SizedBox(height: 8),
-                          Text('Data Source: Data source details here'),
-                          Text('Last Updated: ${DateTime.now().subtract(Duration(days: index))}'),
-                          Text('Details: Chart details here'),
-                          const SizedBox(height: 16),
-                          SizedBox(
-                            height: 200,
-                            child: LineChartSample(),
-                          ),
-                        ],
-                      ),
+                      child: LineChartMolecule(dataProvider: dataProvider),
                     ),
-                  );
-                },
+                  ),
+                  Card(
+                    margin: const EdgeInsets.symmetric(vertical: 8.0),
+                    child: Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: LineChartMolecule(dataProvider: dataProvider),
+                    ),
+                  ),
+                  // Add more chart molecules here
+                ],
               ),
             ),
           ],
