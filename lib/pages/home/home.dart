@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:home_page/molecules/project_card/project_card.dart';
 import 'package:home_page/models/project.dart';
-import 'package:home_page/data/mock_projects.dart';
+import 'package:home_page/services/project_service.dart';
 import 'package:home_page/pages/project_detail/project_detail.dart';
 
 class HomePage extends StatefulWidget {
@@ -17,7 +17,7 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    futureProjects = Future.value(getMockProjects()); // Mock 데이터 사용
+    futureProjects = ProjectService().fetchProjects(); // Mock 또는 실제 서버 데이터 사용
   }
 
   void _navigateToProjectDetail(BuildContext context, String projectName) {
