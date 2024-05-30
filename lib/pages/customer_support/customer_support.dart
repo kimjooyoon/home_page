@@ -9,7 +9,7 @@ class CustomerSupportPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Customer Support'),
       ),
-      body: Padding(
+      body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -57,8 +57,8 @@ class CustomerSupportPage extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        TextField(
-          decoration: const InputDecoration(labelText: 'Your Question'),
+        const TextField(
+          decoration: InputDecoration(labelText: 'Your Question'),
         ),
         const SizedBox(height: 16),
         ElevatedButton(
