@@ -23,11 +23,11 @@ class AuthTemplate extends StatelessWidget {
         fit: StackFit.expand,
         children: [
           Image.asset(
-            'assets/images/login.png', // 배경 이미지 추가
+            'assets/images/login.png',
             fit: BoxFit.cover,
           ),
           Container(
-            color: Colors.black.withOpacity(0.5), // 반투명 레이어 추가
+            color: Colors.black.withOpacity(0.5),
           ),
           Center(
             child: Padding(
@@ -36,10 +36,10 @@ class AuthTemplate extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   SvgPicture.asset(
-                    'assets/images/logo.svg', // 로고 이미지 추가
+                    'assets/images/logo.svg',
                     height: 100,
                   ),
-                  const VerticalSpacer(height: 32.0), // 로고와 탭 사이의 여백 추가
+                  const VerticalSpacer(height: 32.0),
                   Expanded(
                     child: DefaultTabController(
                       length: 2,

@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
 class GoogleSignInButton extends StatelessWidget {
+  final VoidCallback onPressed;
   final double buttonWidth;
   final double buttonHeight;
-  final VoidCallback onPressed;
 
   const GoogleSignInButton({
     Key? key,
     required this.onPressed,
-    this.buttonWidth = 300.0,
-    this.buttonHeight = 50.0,
+    required this.buttonWidth,
+    required this.buttonHeight,
   }) : super(key: key);
 
   @override
