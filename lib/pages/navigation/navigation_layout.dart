@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:home_page/pages/home/home.dart';
-import 'package:home_page/pages/login/login.dart';
 import 'package:home_page/pages/projects/projects.dart';
+import 'package:home_page/pages/about_us/about_us.dart';
+import 'package:home_page/pages/customer_support/customer_support.dart';
 
 class NavigationLayout extends StatefulWidget {
   final int initialIndex;
@@ -21,10 +22,11 @@ class _NavigationLayoutState extends State<NavigationLayout> {
     _selectedIndex = widget.initialIndex;
   }
 
-  static List<Widget> _widgetOptions = <Widget>[
-    HomePage(),
+  static final List<Widget> _widgetOptions = <Widget>[
+    const HomePage(),
     ProjectsPage(),
-    LoginPage(),
+    const AboutUsPage(),
+    const CustomerSupportPage(),
     // 추가 페이지들
   ];
 
@@ -32,20 +34,20 @@ class _NavigationLayoutState extends State<NavigationLayout> {
     setState(() {
       _selectedIndex = index;
     });
-    Navigator.pop(context);  // Drawer를 닫기 위해 pop
+    Navigator.pop(context); // Drawer를 닫기 위해 pop
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Home Page'),
+        title: const Text('Home Page'),
       ),
       drawer: Drawer(
         child: ListView(
           padding: EdgeInsets.zero,
           children: <Widget>[
-            DrawerHeader(
+            const DrawerHeader(
               decoration: BoxDecoration(
                 color: Colors.blue,
               ),
@@ -58,19 +60,24 @@ class _NavigationLayoutState extends State<NavigationLayout> {
               ),
             ),
             ListTile(
-              leading: Icon(Icons.home),
-              title: Text('Home'),
+              leading: const Icon(Icons.home),
+              title: const Text('Home'),
               onTap: () => _onItemTapped(0),
             ),
             ListTile(
-              leading: Icon(Icons.work),
-              title: Text('Projects'),
+              leading: const Icon(Icons.work),
+              title: const Text('Projects'),
               onTap: () => _onItemTapped(1),
             ),
             ListTile(
-              leading: Icon(Icons.login),
-              title: Text('Login'),
+              leading: const Icon(Icons.info),
+              title: const Text('About Us'),
               onTap: () => _onItemTapped(2),
+            ),
+            ListTile(
+              leading: const Icon(Icons.support),
+              title: const Text('Customer Support'),
+              onTap: () => _onItemTapped(3),
             ),
             // 추가 네비게이션 아이템
           ],
