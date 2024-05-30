@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:home_page/models/profile.dart';
-import 'package:home_page/data/mock_profile.dart';
+import 'package:home_page/services/profile_service.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key}) : super(key: key);
@@ -18,12 +18,22 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   void initState() {
     super.initState();
-    futureProfile = Future.value(getMockProfile()); // Mock 데이터 사용
+    futureProfile = ProfileService().fetchProfile(); // Mock 또는 실제 서버 데이터 사용
     futureProfile.then((profile) {
       nameController.text = profile.name;
       emailController.text = profile.email;
       phoneNumberController.text = profile.phoneNumber;
     });
+  }
+
+  void _saveProfile() async {
+    Profile profile = Profile(
+      name: nameController.text,
+      email: emailController.text,
+      phoneNumber: phoneNumberController.text,
+    );
+    await ProfileService().saveProfile(profile);
+    // 저장 후 필요한 동작 추가 (예: 알림 표시)
   }
 
   @override
@@ -56,7 +66,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     controller: nameController,
                     decoration: InputDecoration(
                       labelText: 'Name',
-                      border: OutlineInputBorder(),
+                      border: OutlineInputBorder(), // 수정된 부분
                     ),
                   ),
                   const SizedBox(height: 16),
@@ -64,7 +74,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     controller: emailController,
                     decoration: InputDecoration(
                       labelText: 'Email',
-                      border: OutlineInputBorder(),
+                      border: OutlineInputBorder(), // 수정된 부분
                     ),
                   ),
                   const SizedBox(height: 16),
@@ -72,15 +82,12 @@ class _ProfilePageState extends State<ProfilePage> {
                     controller: phoneNumberController,
                     decoration: InputDecoration(
                       labelText: 'Phone Number',
-                      border: OutlineInputBorder(),
+                      border: OutlineInputBorder(), // 수정된 부분
                     ),
                   ),
                   const SizedBox(height: 32),
                   ElevatedButton(
-                    onPressed: () {
-                      // 프로필 정보 저장 로직
-                      // 실제로는 서버와 통신하여 저장합니다.
-                    },
+                    onPressed: _saveProfile,
                     child: const Text('Save'),
                   ),
                 ],
