@@ -11,7 +11,7 @@ class LineChartMolecule extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Text('Line Chart Example'),
+        Text('Line Chart Example', style: Theme.of(context).textTheme.headline6),
         SizedBox(
           height: 200,
           child: LineChartAtom(

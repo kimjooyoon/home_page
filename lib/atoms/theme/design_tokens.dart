@@ -21,4 +21,16 @@ class DesignTokens {
     fontSize: 16,
     color: textColor,
   );
+
+  // Grid color
+  static const Color darkModeGridColor = Colors.grey;
+  static const Color lightModeGridColor = Colors.grey;
+
+  // Border color
+  static const Color darkModeBorderColor = Colors.grey;
+  static const Color lightModeBorderColor = Colors.grey;
+
+  // Text color for dark mode and light mode
+  static const Color darkModeTextColor = Colors.white;
+  static const Color lightModeTextColor = Colors.black;
 }

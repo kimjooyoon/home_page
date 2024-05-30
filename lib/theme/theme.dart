@@ -4,13 +4,15 @@ import 'package:home_page/atoms/theme/design_tokens.dart';
 final ThemeData lightTheme = ThemeData(
   primaryColor: DesignTokens.primaryColor,
   hintColor: DesignTokens.hintTextColor,
+  scaffoldBackgroundColor: Color(0xFFF0F0F0), // 밝은 회색 배경 색상
+  backgroundColor: Color(0xFFF0F0F0), // 밝은 회색 배경 색상
   textTheme: const TextTheme(
-    bodyText1: TextStyle(
+    bodyLarge: TextStyle(
       fontFamily: 'Roboto',
       fontSize: 16,
       color: Colors.black,
     ),
-    bodyText2: TextStyle(
+    bodyMedium: TextStyle(
       fontFamily: 'Roboto',
       fontSize: 14,
       color: Colors.black54,
@@ -43,9 +45,11 @@ final ThemeData lightTheme = ThemeData(
 final ThemeData darkTheme = ThemeData(
   primaryColor: DesignTokens.primaryColor,
   hintColor: DesignTokens.hintTextColor,
+  scaffoldBackgroundColor: Colors.black,
+  backgroundColor: Colors.black,
   textTheme: const TextTheme(
-    bodyText1: DesignTokens.bodyText1,
-    bodyText2: TextStyle(
+    bodyLarge: DesignTokens.bodyText1,
+    bodyMedium: TextStyle(
       fontFamily: 'Roboto',
       fontSize: 14,
       color: DesignTokens.textColor,
