@@ -23,7 +23,8 @@ class ProfileService {
 
   Future<void> saveProfile(Profile profile) async {
     if (Env.isLocal) {
-      // Mock 저장 로직 (필요시 구현)
+      // 로컬 환경에서의 Mock 저장 처리
+      print('Mock Save Profile: ${profile.name}, ${profile.email}, ${profile.phoneNumber}');
       return Future.value();
     } else {
       final response = await http.put(
