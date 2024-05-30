@@ -15,8 +15,13 @@ import 'package:home_page/services/auth_service.dart';
 class NavigationLayout extends StatefulWidget {
   final int initialIndex;
   final bool isAdmin;
+  final VoidCallback toggleTheme; // 테마 토글 콜백 함수
 
-  NavigationLayout({this.initialIndex = 0, required this.isAdmin});
+  NavigationLayout({
+    this.initialIndex = 0,
+    required this.isAdmin,
+    required this.toggleTheme, // 생성자에 추가
+  });
 
   @override
   _NavigationLayoutState createState() => _NavigationLayoutState();
@@ -62,6 +67,12 @@ class _NavigationLayoutState extends State<NavigationLayout> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Home Page'),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.brightness_6),
+            onPressed: widget.toggleTheme,
+          ),
+        ],
       ),
       drawer: Drawer(
         child: ListView(

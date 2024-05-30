@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:home_page/atoms/theme/design_tokens.dart';
 
 class CustomInput extends StatelessWidget {
   final TextEditingController controller;
@@ -29,16 +30,18 @@ class CustomInput extends StatelessWidget {
       decoration: InputDecoration(
         labelText: labelText,
         hintText: hintText,
-        labelStyle: const TextStyle(color: Colors.white),
-        hintStyle: const TextStyle(color: Colors.white70),
-        enabledBorder: const OutlineInputBorder(
-          borderSide: BorderSide(color: Colors.white),
+        labelStyle: DesignTokens.labelTextStyle,
+        hintStyle: DesignTokens.hintTextStyle,
+        enabledBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: DesignTokens.borderColor),
+          borderRadius: BorderRadius.circular(DesignTokens.borderRadius),
         ),
-        focusedBorder: const OutlineInputBorder(
-          borderSide: BorderSide(color: Colors.blue),
+        focusedBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: DesignTokens.focusedBorderColor),
+          borderRadius: BorderRadius.circular(DesignTokens.borderRadius),
         ),
       ),
-      style: const TextStyle(color: Colors.white),
+      style: DesignTokens.inputTextStyle,
       validator: validator,
       onChanged: onChanged,
     );

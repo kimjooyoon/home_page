@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:home_page/atoms/input/input.dart';
+import 'package:home_page/atoms/input/custom_input.dart';
 import 'package:home_page/molecules/password/password.dart';
 import 'package:home_page/molecules/google_sign_in_button/google_sign_in_button.dart';
 import 'package:home_page/atoms/spacer/spacer.dart';

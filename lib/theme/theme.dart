@@ -1,41 +1,76 @@
 import 'package:flutter/material.dart';
-import 'package:home_page/pages/navigation/navigation_layout.dart';
-import 'package:home_page/pages/login/auth_page.dart';
+import 'package:home_page/atoms/theme/design_tokens.dart';
 
-final ThemeData appDarkTheme = ThemeData(
-  primaryColor: Colors.blue,
-  hintColor: Colors.orange,
+final ThemeData lightTheme = ThemeData(
+  primaryColor: DesignTokens.primaryColor,
+  hintColor: DesignTokens.hintTextColor,
   textTheme: const TextTheme(
-    bodyLarge: TextStyle(fontFamily: 'Roboto', fontSize: 16, color: Colors.black),
-    bodyMedium: TextStyle(fontFamily: 'Roboto', fontSize: 14, color: Colors.black54),
+    bodyText1: TextStyle(
+      fontFamily: 'Roboto',
+      fontSize: 16,
+      color: Colors.black,
+    ),
+    bodyText2: TextStyle(
+      fontFamily: 'Roboto',
+      fontSize: 14,
+      color: Colors.black54,
+    ),
   ),
   tabBarTheme: const TabBarTheme(
-    labelColor: Colors.blue, // 활성화된 탭 텍스트 색상
-    unselectedLabelColor: Colors.white, // 비활성화된 탭 텍스트 색상
+    labelColor: DesignTokens.primaryColor,
+    unselectedLabelColor: Colors.black,
   ),
   buttonTheme: ButtonThemeData(
-    buttonColor: Colors.blue,
+    buttonColor: DesignTokens.primaryColor,
     shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(8.0),
+      borderRadius: BorderRadius.circular(DesignTokens.borderRadius),
+    ),
+  ),
+  inputDecorationTheme: InputDecorationTheme(
+    labelStyle: TextStyle(color: Colors.black),
+    hintStyle: TextStyle(color: Colors.black54),
+    enabledBorder: OutlineInputBorder(
+      borderSide: BorderSide(color: Colors.black),
+      borderRadius: BorderRadius.circular(DesignTokens.borderRadius),
+    ),
+    focusedBorder: OutlineInputBorder(
+      borderSide: BorderSide(color: DesignTokens.primaryColor),
+      borderRadius: BorderRadius.circular(DesignTokens.borderRadius),
     ),
   ),
 );
 
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Home Page',
-      theme: appDarkTheme,
-      initialRoute: '/auth',
-      routes: {
-        '/auth': (context) => AuthPage(),
-        '/navigation': (context) => NavigationLayout(isAdmin: true),
-      },
-    );
-  }
-}
+final ThemeData darkTheme = ThemeData(
+  primaryColor: DesignTokens.primaryColor,
+  hintColor: DesignTokens.hintTextColor,
+  textTheme: const TextTheme(
+    bodyText1: DesignTokens.bodyText1,
+    bodyText2: TextStyle(
+      fontFamily: 'Roboto',
+      fontSize: 14,
+      color: DesignTokens.textColor,
+    ),
+  ),
+  tabBarTheme: const TabBarTheme(
+    labelColor: DesignTokens.primaryColor,
+    unselectedLabelColor: DesignTokens.textColor,
+  ),
+  buttonTheme: ButtonThemeData(
+    buttonColor: DesignTokens.primaryColor,
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(DesignTokens.borderRadius),
+    ),
+  ),
+  inputDecorationTheme: InputDecorationTheme(
+    labelStyle: DesignTokens.labelTextStyle,
+    hintStyle: DesignTokens.hintTextStyle,
+    enabledBorder: OutlineInputBorder(
+      borderSide: BorderSide(color: DesignTokens.borderColor),
+      borderRadius: BorderRadius.circular(DesignTokens.borderRadius),
+    ),
+    focusedBorder: OutlineInputBorder(
+      borderSide: BorderSide(color: DesignTokens.focusedBorderColor),
+      borderRadius: BorderRadius.circular(DesignTokens.borderRadius),
+    ),
+  ),
+);
