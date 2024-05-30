@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:home_page/atoms/spacer/spacer.dart';  // VerticalSpacer 임포트
 
 class AuthPage extends StatefulWidget {
   @override
@@ -44,7 +45,7 @@ class _AuthPageState extends State<AuthPage> with SingleTickerProviderStateMixin
                     'assets/images/logo.svg',  // 로고 이미지 추가
                     height: 100,
                   ),
-                  const SizedBox(height: 32.0),
+                  const VerticalSpacer(height: 32.0), // 로고와 탭 사이의 여백 추가
                   TabBar(
                     controller: _tabController,
                     indicatorColor: Colors.white,
@@ -74,6 +75,7 @@ class _AuthPageState extends State<AuthPage> with SingleTickerProviderStateMixin
   Widget _buildLoginForm() {
     return Column(
       children: [
+        const VerticalSpacer(height: 16.0), // 탭과 폼 사이의 여백 추가
         TextField(
           decoration: InputDecoration(
             labelText: 'Email',
@@ -85,7 +87,7 @@ class _AuthPageState extends State<AuthPage> with SingleTickerProviderStateMixin
             ),
           ),
         ),
-        const SizedBox(height: 16.0),
+        const VerticalSpacer(height: 16.0),
         TextField(
           obscureText: true,
           decoration: InputDecoration(
@@ -98,7 +100,7 @@ class _AuthPageState extends State<AuthPage> with SingleTickerProviderStateMixin
             ),
           ),
         ),
-        const SizedBox(height: 32.0),
+        const VerticalSpacer(height: 32.0),
         ElevatedButton(
           onPressed: () {
             Navigator.pushReplacementNamed(context, '/navigation');
@@ -112,6 +114,7 @@ class _AuthPageState extends State<AuthPage> with SingleTickerProviderStateMixin
   Widget _buildSignUpForm() {
     return Column(
       children: [
+        const VerticalSpacer(height: 16.0), // 탭과 폼 사이의 여백 추가
         TextField(
           decoration: InputDecoration(
             labelText: 'Name',
@@ -123,7 +126,7 @@ class _AuthPageState extends State<AuthPage> with SingleTickerProviderStateMixin
             ),
           ),
         ),
-        const SizedBox(height: 16.0),
+        const VerticalSpacer(height: 16.0),
         TextField(
           decoration: InputDecoration(
             labelText: 'Email',
@@ -135,7 +138,7 @@ class _AuthPageState extends State<AuthPage> with SingleTickerProviderStateMixin
             ),
           ),
         ),
-        const SizedBox(height: 16.0),
+        const VerticalSpacer(height: 16.0),
         TextField(
           obscureText: true,
           decoration: InputDecoration(
@@ -148,7 +151,7 @@ class _AuthPageState extends State<AuthPage> with SingleTickerProviderStateMixin
             ),
           ),
         ),
-        const SizedBox(height: 32.0),
+        const VerticalSpacer(height: 32.0),
         ElevatedButton(
           onPressed: () {
             // 회원가입 로직

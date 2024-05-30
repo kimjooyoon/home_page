@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:home_page/pages/home/home.dart';  // 홈 페이지 임포트
 
 import 'package:home_page/atoms/button/button.dart';
 import 'package:home_page/atoms/input/input.dart';
@@ -36,7 +35,7 @@ class LoginForm extends StatelessWidget {
             // 로그인 버튼을 누르면 홈 페이지로 네비게이션
             Navigator.pushReplacement(
               context,
-              MaterialPageRoute(builder: (context) => NavigationLayout(initialIndex: 0)),
+              MaterialPageRoute(builder: (context) => NavigationLayout(initialIndex: 0, isAdmin: true,)),
             );
           },
         ),
