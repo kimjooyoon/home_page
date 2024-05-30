@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'line_chart_sample.dart'; // 파일 경로에 맞게 수정하세요
+import 'package:home_page/molecules/charts/line_chart_sample.dart'; // 경로 수정
 
 class DashboardChartsPage extends StatelessWidget {
   const DashboardChartsPage({Key? key}) : super(key: key);
@@ -33,7 +33,7 @@ class DashboardChartsPage extends StatelessWidget {
                         children: [
                           Text(
                             'Chart #$index',
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.bold,
                             ),
