@@ -1,30 +1,28 @@
 import 'package:flutter/material.dart';
-import 'package:home_page/atoms/spacer/spacer.dart'; // VerticalSpacer 임포트
+import 'package:home_page/molecules/google_sign_in_button/google_sign_in_button.dart';
+import 'package:home_page/atoms/spacer/spacer.dart';
 
 class SignUpForm extends StatelessWidget {
-  final void Function() onSignUp;
-  final void Function() onGoogleSignUp;
-  final double buttonWidth;
-  final double buttonHeight;
+  final TextEditingController nameController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  final double buttonWidth = 300.0; // 버튼 너비를 정의하는 변수
+  final double buttonHeight = 50.0; // 버튼 높이를 정의하는 변수
+  final VoidCallback onSignUp;
+  final VoidCallback onGoogleSignUp;
 
-  const SignUpForm({
+  SignUpForm({
     Key? key,
     required this.onSignUp,
     required this.onGoogleSignUp,
-    this.buttonWidth = 300.0,
-    this.buttonHeight = 50.0,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final nameController = TextEditingController();
-    final emailController = TextEditingController();
-    final passwordController = TextEditingController();
-
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        const VerticalSpacer(height: 16.0), // 로고와 탭 사이의 여백 추가
+        VerticalSpacer(height: 16.0), // 탭과 폼 사이의 여백 추가
         TextField(
           controller: nameController,
           decoration: InputDecoration(
@@ -88,19 +86,10 @@ class SignUpForm extends StatelessWidget {
           ),
         ),
         VerticalSpacer(height: 16.0),
-        GestureDetector(
-          onTap: onGoogleSignUp,
-          child: Container(
-            width: buttonWidth,
-            height: buttonHeight,
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage('assets/images/google_logo.png'),
-                fit: BoxFit.contain,
-              ),
-              borderRadius: BorderRadius.circular(8.0),
-            ),
-          ),
+        GoogleSignInButton(
+          onPressed: onGoogleSignUp,
+          buttonWidth: buttonWidth,
+          buttonHeight: buttonHeight,
         ),
       ],
     );

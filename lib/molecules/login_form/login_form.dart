@@ -2,21 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:home_page/atoms/input/input.dart';
 import 'package:home_page/molecules/password/password.dart';
 import 'package:home_page/molecules/google_sign_in_button/google_sign_in_button.dart';
-import 'package:home_page/atoms/spacer/spacer.dart'; // VerticalSpacer 임포트
+import 'package:home_page/atoms/spacer/spacer.dart';
 
 class LoginForm extends StatelessWidget {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final double buttonWidth = 300.0; // 버튼 너비를 정의하는 변수
   final double buttonHeight = 50.0; // 버튼 높이를 정의하는 변수
-
   final VoidCallback onLogin;
   final VoidCallback onGoogleLogin;
 
   LoginForm({
+    Key? key,
     required this.onLogin,
     required this.onGoogleLogin,
-    Key? key,
   }) : super(key: key);
 
   @override
@@ -24,7 +23,7 @@ class LoginForm extends StatelessWidget {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        const VerticalSpacer(height: 16.0), // 로고와 탭 사이의 여백 추가
+        const VerticalSpacer(height: 16.0),
         ConstrainedBox(
           constraints: const BoxConstraints(maxWidth: 450),
           child: CustomInput(
