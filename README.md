@@ -1,6 +1,6 @@
 # home_page
 
-stargazer home page.
+stargaser home page.
 
 ## Getting Started
 
