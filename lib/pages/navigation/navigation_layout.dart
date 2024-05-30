@@ -3,7 +3,7 @@ import 'package:home_page/pages/home/home.dart';
 import 'package:home_page/pages/projects/projects.dart';
 import 'package:home_page/pages/about_us/about_us.dart';
 import 'package:home_page/pages/customer_support/customer_support.dart';
-import 'package:home_page/pages/transactions/transactions.dart';
+import 'package:home_page/pages/profile/profile_page.dart';
 import 'package:home_page/pages/admin/customer_account_management.dart';
 import 'package:home_page/pages/admin/admin_customer_communication.dart';
 import 'package:home_page/pages/admin/customer_management.dart';
@@ -13,8 +13,9 @@ import 'package:home_page/pages/admin/dashboard_charts.dart';
 
 class NavigationLayout extends StatefulWidget {
   final int initialIndex;
+  final bool isAdmin;
 
-  NavigationLayout({this.initialIndex = 0});
+  NavigationLayout({this.initialIndex = 0, required this.isAdmin});
 
   @override
   _NavigationLayoutState createState() => _NavigationLayoutState();
@@ -31,17 +32,16 @@ class _NavigationLayoutState extends State<NavigationLayout> {
 
   static final List<Widget> _widgetOptions = <Widget>[
     const HomePage(),
-    ProjectsPage(),
+     ProjectsPage(),
     const AboutUsPage(),
     const CustomerSupportPage(),
-    const TransactionsPage(),
+    const ProfilePage(),
     const CustomerAccountManagementPage(),
     const AdminCustomerCommunicationPage(),
     const CustomerManagementPage(),
     const TransactionManagementPage(),
     const MeetingDetailsPage(),
     const DashboardChartsPage(),
-    // 추가 페이지들
   ];
 
   void _onItemTapped(int index) {
@@ -94,41 +94,42 @@ class _NavigationLayoutState extends State<NavigationLayout> {
               index: 3,
             ),
             _buildDrawerItem(
-              icon: Icons.swap_horiz,
-              text: 'Transactions',
+              icon: Icons.person,
+              text: 'Profile',
               index: 4,
             ),
-            _buildDrawerItem(
-              icon: Icons.account_circle,
-              text: 'Customer Account Management',
-              index: 5,
-            ),
-            _buildDrawerItem(
-              icon: Icons.email,
-              text: 'Admin Customer Communication',
-              index: 6,
-            ),
-            _buildDrawerItem(
-              icon: Icons.people,
-              text: 'Customer Management',
-              index: 7,
-            ),
-            _buildDrawerItem(
-              icon: Icons.payment,
-              text: 'Transaction Management',
-              index: 8,
-            ),
-            _buildDrawerItem(
-              icon: Icons.meeting_room,
-              text: 'Meeting Details',
-              index: 9,
-            ),
-            _buildDrawerItem(
-              icon: Icons.show_chart,
-              text: 'Dashboard Charts',
-              index: 10,
-            ),
-            // 추가 네비게이션 아이템
+            if (widget.isAdmin) ...[
+              _buildDrawerItem(
+                icon: Icons.account_circle,
+                text: 'Customer Account Management',
+                index: 5,
+              ),
+              _buildDrawerItem(
+                icon: Icons.email,
+                text: 'Admin Customer Communication',
+                index: 6,
+              ),
+              _buildDrawerItem(
+                icon: Icons.people,
+                text: 'Customer Management',
+                index: 7,
+              ),
+              _buildDrawerItem(
+                icon: Icons.payment,
+                text: 'Transaction Management',
+                index: 8,
+              ),
+              _buildDrawerItem(
+                icon: Icons.meeting_room,
+                text: 'Meeting Details',
+                index: 9,
+              ),
+              _buildDrawerItem(
+                icon: Icons.show_chart,
+                text: 'Dashboard Charts',
+                index: 10,
+              ),
+            ],
           ],
         ),
       ),
