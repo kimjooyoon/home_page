@@ -32,11 +32,11 @@ class _NavigationLayoutState extends State<NavigationLayout> {
 
   static final List<Widget> _widgetOptions = <Widget>[
     const HomePage(),
-     ProjectsPage(),
+    ProjectsPage(),
     const AboutUsPage(),
     const CustomerSupportPage(),
     const ProfilePage(),
-    const CustomerAccountManagementPage(),
+    CustomerAccountManagementPage(),
     const AdminCustomerCommunicationPage(),
     const CustomerManagementPage(),
     const TransactionManagementPage(),
