@@ -59,25 +59,25 @@ class _NavigationLayoutState extends State<NavigationLayout> {
                 ),
               ),
             ),
-            ListTile(
-              leading: const Icon(Icons.home),
-              title: const Text('Home'),
-              onTap: () => _onItemTapped(0),
+            _buildDrawerItem(
+              icon: Icons.home,
+              text: 'Home',
+              index: 0,
             ),
-            ListTile(
-              leading: const Icon(Icons.work),
-              title: const Text('Projects'),
-              onTap: () => _onItemTapped(1),
+            _buildDrawerItem(
+              icon: Icons.work,
+              text: 'Projects',
+              index: 1,
             ),
-            ListTile(
-              leading: const Icon(Icons.info),
-              title: const Text('About Us'),
-              onTap: () => _onItemTapped(2),
+            _buildDrawerItem(
+              icon: Icons.info,
+              text: 'About Us',
+              index: 2,
             ),
-            ListTile(
-              leading: const Icon(Icons.support),
-              title: const Text('Customer Support'),
-              onTap: () => _onItemTapped(3),
+            _buildDrawerItem(
+              icon: Icons.support,
+              text: 'Customer Support',
+              index: 3,
             ),
             // 추가 네비게이션 아이템
           ],
@@ -86,6 +86,19 @@ class _NavigationLayoutState extends State<NavigationLayout> {
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
+    );
+  }
+
+  Widget _buildDrawerItem({
+    required IconData icon,
+    required String text,
+    required int index,
+  }) {
+    return ListTile(
+      leading: Icon(icon),
+      title: Text(text),
+      selected: _selectedIndex == index,
+      onTap: () => _onItemTapped(index),
     );
   }
 }
