@@ -11,7 +11,7 @@ class BarChartAtom extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isDarkMode = Theme.of(context).brightness == Brightness.dark;
-    final barColor = isDarkMode ? DesignTokens.textColor : DesignTokens.primaryColor;
+    final barColor = isDarkMode ? DesignTokens.bodyText1.color : DesignTokens.primaryColor;
 
     return BarChart(
       BarChartData(
