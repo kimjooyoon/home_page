@@ -13,10 +13,10 @@ class LoginForm extends StatelessWidget {
   final VoidCallback onGoogleLogin;
 
   LoginForm({
-    Key? key,
+    super.key,
     required this.onLogin,
     required this.onGoogleLogin,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +40,7 @@ class LoginForm extends StatelessWidget {
           child: PasswordInput(controller: passwordController),
         ),
         const VerticalSpacer(height: 32.0),
-        Container(
+        SizedBox(
           width: buttonWidth,
           height: buttonHeight,
           child: ElevatedButton(
@@ -48,7 +48,7 @@ class LoginForm extends StatelessWidget {
               backgroundColor: Colors.white,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(8.0),
-                side: BorderSide(color: Colors.grey),
+                side: const BorderSide(color: Colors.grey),
               ),
             ),
             onPressed: onLogin,

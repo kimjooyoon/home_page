@@ -1,12 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:home_page/atoms/theme/custom_theme_extension.dart';
 
 class VerticalSpacer extends StatelessWidget {
   final double height;
 
-  const VerticalSpacer({Key? key, required this.height}) : super(key: key);
+  const VerticalSpacer({super.key, required this.height});
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(height: height);
+    final customTheme = Theme.of(context).extension<CustomThemeExtension>();
+
+    if (customTheme == null) {
+      return SizedBox(height: height);
+    }
+
+    double spacing = height;
+
+    if (height == 8.0) {
+      spacing = customTheme.smallSpacing;
+    } else if (height == 16.0) {
+      spacing = customTheme.mediumSpacing;
+    } else if (height == 32.0) {
+      spacing = customTheme.largeSpacing;
+    }
+
+    return SizedBox(height: spacing);
   }
 }
