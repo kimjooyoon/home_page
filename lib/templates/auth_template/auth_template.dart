@@ -10,6 +10,7 @@ class AuthTemplate extends StatelessWidget {
   final VoidCallback onGoogleSignUp;
 
   const AuthTemplate({
+    super.key,
     required this.onLogin,
     required this.onSignUp,
     required this.onGoogleLogin,

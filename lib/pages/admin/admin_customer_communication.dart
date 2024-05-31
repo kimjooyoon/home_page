@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:home_page/templates/base/base_template.dart';
 
 class AdminCustomerCommunicationPage extends StatelessWidget {
   const AdminCustomerCommunicationPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Customer Communication'),
-      ),
-      body: Padding(
+    return BaseTemplate(
+      title: 'Customer Communication',
+      child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
