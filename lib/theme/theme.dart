@@ -3,21 +3,29 @@ import 'package:home_page/atoms/theme/design_tokens.dart';
 
 final ThemeData lightTheme = ThemeData(
   primaryColor: DesignTokens.primaryColor,
-  hintColor: DesignTokens.hintTextColor,
-  scaffoldBackgroundColor: DesignTokens.lightModeBackgroundColor,
-  colorScheme: ColorScheme.fromSwatch()
-      .copyWith(background: DesignTokens.lightModeBackgroundColor),
+  hintColor: DesignTokens.lightHintTextColor,
+  scaffoldBackgroundColor: DesignTokens.lightBackgroundColor,
+  colorScheme: ColorScheme.fromSwatch().copyWith(
+    background: DesignTokens.lightBackgroundColor,
+    secondary: DesignTokens.secondaryColor,
+    error: DesignTokens.errorColor,
+    surface: DesignTokens.lightBackgroundColor,
+    onSurface: DesignTokens.lightTextColor,
+    onBackground: DesignTokens.lightTextColor,
+    onPrimary: DesignTokens.lightTextColor,
+    onSecondary: DesignTokens.lightTextColor,
+  ),
   textTheme: const TextTheme(
-    bodyLarge: DesignTokens.lightModeBodyText1,
+    bodyLarge: DesignTokens.lightBodyText1,
     bodyMedium: TextStyle(
       fontFamily: 'Roboto',
       fontSize: 14,
-      color: DesignTokens.lightModeTextColor,
+      color: DesignTokens.lightTextColor,
     ),
   ),
   tabBarTheme: const TabBarTheme(
     labelColor: DesignTokens.primaryColor,
-    unselectedLabelColor: DesignTokens.lightModeTextColor,
+    unselectedLabelColor: DesignTokens.lightTextColor,
   ),
   buttonTheme: ButtonThemeData(
     buttonColor: DesignTokens.primaryColor,
@@ -26,14 +34,14 @@ final ThemeData lightTheme = ThemeData(
     ),
   ),
   inputDecorationTheme: InputDecorationTheme(
-    labelStyle: DesignTokens.lightModeLabelTextStyle,
-    hintStyle: DesignTokens.lightModeHintTextStyle,
+    labelStyle: DesignTokens.lightLabelTextStyle,
+    hintStyle: DesignTokens.lightHintTextStyle,
     enabledBorder: OutlineInputBorder(
-      borderSide: BorderSide(color: DesignTokens.lightModeBorderColor),
+      borderSide: const BorderSide(color: DesignTokens.lightBorderColor),
       borderRadius: BorderRadius.circular(DesignTokens.borderRadius),
     ),
     focusedBorder: OutlineInputBorder(
-      borderSide: BorderSide(color: DesignTokens.focusedBorderColor),
+      borderSide: const BorderSide(color: DesignTokens.focusedBorderColor),
       borderRadius: BorderRadius.circular(DesignTokens.borderRadius),
     ),
   ),
@@ -41,21 +49,29 @@ final ThemeData lightTheme = ThemeData(
 
 final ThemeData darkTheme = ThemeData(
   primaryColor: DesignTokens.primaryColor,
-  hintColor: DesignTokens.hintTextColor,
-  scaffoldBackgroundColor: DesignTokens.darkModeBackgroundColor,
-  colorScheme: ColorScheme.fromSwatch()
-      .copyWith(background: DesignTokens.darkModeBackgroundColor),
+  hintColor: DesignTokens.darkHintTextColor,
+  scaffoldBackgroundColor: DesignTokens.darkBackgroundColor,
+  colorScheme: ColorScheme.fromSwatch().copyWith(
+    background: DesignTokens.darkBackgroundColor,
+    secondary: DesignTokens.secondaryColor,
+    error: DesignTokens.errorColor,
+    surface: DesignTokens.darkBackgroundColor,
+    onSurface: DesignTokens.darkTextColor,
+    onBackground: DesignTokens.darkTextColor,
+    onPrimary: DesignTokens.darkTextColor,
+    onSecondary: DesignTokens.darkTextColor,
+  ),
   textTheme: const TextTheme(
-    bodyLarge: DesignTokens.darkModeBodyText1,
+    bodyLarge: DesignTokens.darkBodyText1,
     bodyMedium: TextStyle(
       fontFamily: 'Roboto',
       fontSize: 14,
-      color: DesignTokens.darkModeTextColor,
+      color: DesignTokens.darkTextColor,
     ),
   ),
   tabBarTheme: const TabBarTheme(
     labelColor: DesignTokens.primaryColor,
-    unselectedLabelColor: DesignTokens.darkModeTextColor,
+    unselectedLabelColor: DesignTokens.darkTextColor,
   ),
   buttonTheme: ButtonThemeData(
     buttonColor: DesignTokens.primaryColor,
@@ -64,14 +80,14 @@ final ThemeData darkTheme = ThemeData(
     ),
   ),
   inputDecorationTheme: InputDecorationTheme(
-    labelStyle: DesignTokens.darkModeLabelTextStyle,
-    hintStyle: DesignTokens.darkModeHintTextStyle,
+    labelStyle: DesignTokens.darkLabelTextStyle,
+    hintStyle: DesignTokens.darkHintTextStyle,
     enabledBorder: OutlineInputBorder(
-      borderSide: BorderSide(color: DesignTokens.darkModeBorderColor),
+      borderSide: const BorderSide(color: DesignTokens.darkBorderColor),
       borderRadius: BorderRadius.circular(DesignTokens.borderRadius),
     ),
     focusedBorder: OutlineInputBorder(
-      borderSide: BorderSide(color: DesignTokens.focusedBorderColor),
+      borderSide: const BorderSide(color: DesignTokens.focusedBorderColor),
       borderRadius: BorderRadius.circular(DesignTokens.borderRadius),
     ),
   ),
