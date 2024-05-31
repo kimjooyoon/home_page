@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class CustomerManagementPage extends StatelessWidget {
-  const CustomerManagementPage({Key? key}) : super(key: key);
+  const CustomerManagementPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +30,7 @@ class CustomerManagementPage extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text('Contact: contact$index@example.com'),
-                          Text('Request: Customer request details here'),
+                          const Text('Request: Customer request details here'),
                           Text('Website: www.customer$index.com'),
                         ],
                       ),

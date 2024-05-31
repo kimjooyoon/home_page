@@ -17,17 +17,18 @@ class NavigationLayout extends StatefulWidget {
   final bool isAdmin;
   final VoidCallback toggleTheme; // 테마 토글 콜백 함수
 
-  NavigationLayout({
+  const NavigationLayout({
+    super.key,
     this.initialIndex = 0,
     required this.isAdmin,
     required this.toggleTheme, // 생성자에 추가
   });
 
   @override
-  _NavigationLayoutState createState() => _NavigationLayoutState();
+  NavigationLayoutState createState() => NavigationLayoutState();
 }
 
-class _NavigationLayoutState extends State<NavigationLayout> {
+class NavigationLayoutState extends State<NavigationLayout> {
   late int _selectedIndex;
 
   @override
@@ -42,7 +43,7 @@ class _NavigationLayoutState extends State<NavigationLayout> {
     const AboutUsPage(),
     const CustomerSupportPage(),
     const ProfilePage(),
-    CustomerAccountManagementPage(),
+    const CustomerAccountManagementPage(),
     const AdminCustomerCommunicationPage(),
     const CustomerManagementPage(),
     const TransactionManagementPage(),
@@ -54,11 +55,12 @@ class _NavigationLayoutState extends State<NavigationLayout> {
     setState(() {
       _selectedIndex = index;
     });
-    Navigator.pop(context); // Drawer를 닫기 위해 pop
+    Navigator.pop(context); // Drawer 닫기 위해 pop
   }
 
   void _logout() async {
     await AuthService().logout();
+    if (!mounted) return;
     Navigator.pushReplacementNamed(context, '/auth');
   }
 
@@ -69,7 +71,7 @@ class _NavigationLayoutState extends State<NavigationLayout> {
         title: const Text('Home Page'),
         actions: [
           IconButton(
-            icon: Icon(Icons.brightness_6),
+            icon: const Icon(Icons.brightness_6),
             onPressed: widget.toggleTheme,
           ),
         ],
@@ -149,8 +151,8 @@ class _NavigationLayoutState extends State<NavigationLayout> {
             ],
             const Divider(),
             ListTile(
-              leading: Icon(Icons.exit_to_app),
-              title: Text('Logout'),
+              leading: const Icon(Icons.exit_to_app),
+              title: const Text('Logout'),
               onTap: _logout,
             ),
           ],

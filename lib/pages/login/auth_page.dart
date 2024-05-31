@@ -5,6 +5,7 @@ class AuthPage extends StatelessWidget {
   final VoidCallback onLogin;
 
   const AuthPage({
+    super.key,
     required this.onLogin,
   });
 
@@ -14,8 +15,8 @@ class AuthPage extends StatelessWidget {
       onLogin: () {
         onLogin();
         Navigator.pushReplacementNamed(context, '/navigation');
-        },
-      onSignUp: (){
+      },
+      onSignUp: () {
         onLogin();
         Navigator.pushReplacementNamed(context, '/navigation');
       },

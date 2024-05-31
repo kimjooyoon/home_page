@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class CustomerSupportPage extends StatelessWidget {
-  const CustomerSupportPage({Key? key}) : super(key: key);
+  const CustomerSupportPage({super.key});
 
   @override
   Widget build(BuildContext context) {

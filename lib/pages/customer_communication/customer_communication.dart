@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class CustomerCommunicationPage extends StatelessWidget {
-  const CustomerCommunicationPage({Key? key}) : super(key: key);
+  const CustomerCommunicationPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,8 +19,8 @@ class CustomerCommunicationPage extends StatelessWidget {
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 16),
-            TextField(
-              decoration: const InputDecoration(
+            const TextField(
+              decoration: InputDecoration(
                 labelText: 'Enter your message',
               ),
             ),

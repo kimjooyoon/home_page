@@ -7,7 +7,7 @@ import 'package:home_page/molecules/charts/radar_chart_molecule.dart';
 import 'package:home_page/services/mock_chart_data_provider.dart';
 
 class DashboardChartsPage extends StatelessWidget {
-  const DashboardChartsPage({Key? key}) : super(key: key);
+  const DashboardChartsPage({super.key});
 
   @override
   Widget build(BuildContext context) {

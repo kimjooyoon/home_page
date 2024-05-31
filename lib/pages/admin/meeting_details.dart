@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class MeetingDetailsPage extends StatelessWidget {
-  const MeetingDetailsPage({Key? key}) : super(key: key);
+  const MeetingDetailsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -30,8 +30,8 @@ class MeetingDetailsPage extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text('Date: ${DateTime.now().subtract(Duration(days: index))}'),
-                          Text('Attendees: Attendee names here'),
-                          Text('Details: Meeting details here'),
+                          const Text('Attendees: Attendee names here'),
+                          const Text('Details: Meeting details here'),
                         ],
                       ),
                       trailing: IconButton(

@@ -3,13 +3,13 @@ import 'package:home_page/models/profile.dart';
 import 'package:home_page/services/profile_service.dart';
 
 class ProfilePage extends StatefulWidget {
-  const ProfilePage({Key? key}) : super(key: key);
+  const ProfilePage({super.key});
 
   @override
-  _ProfilePageState createState() => _ProfilePageState();
+  ProfilePageState createState() => ProfilePageState();
 }
 
-class _ProfilePageState extends State<ProfilePage> {
+class ProfilePageState extends State<ProfilePage> {
   late Future<Profile> futureProfile;
   final nameController = TextEditingController();
   final emailController = TextEditingController();
@@ -46,11 +46,11 @@ class _ProfilePageState extends State<ProfilePage> {
         future: futureProfile,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator());
+            return const Center(child: CircularProgressIndicator());
           } else if (snapshot.hasError) {
             return Center(child: Text('Error: ${snapshot.error}'));
           } else if (!snapshot.hasData) {
-            return Center(child: Text('No profile information available'));
+            return const Center(child: Text('No profile information available'));
           } else {
             return Padding(
               padding: const EdgeInsets.all(16.0),
@@ -64,25 +64,25 @@ class _ProfilePageState extends State<ProfilePage> {
                   const SizedBox(height: 20),
                   TextField(
                     controller: nameController,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       labelText: 'Name',
-                      border: OutlineInputBorder(), // 수정된 부분
+                      border: OutlineInputBorder(),
                     ),
                   ),
                   const SizedBox(height: 16),
                   TextField(
                     controller: emailController,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       labelText: 'Email',
-                      border: OutlineInputBorder(), // 수정된 부분
+                      border: OutlineInputBorder(),
                     ),
                   ),
                   const SizedBox(height: 16),
                   TextField(
                     controller: phoneNumberController,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       labelText: 'Phone Number',
-                      border: OutlineInputBorder(), // 수정된 부분
+                      border: OutlineInputBorder(),
                     ),
                   ),
                   const SizedBox(height: 32),

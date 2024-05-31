@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class TransactionManagementPage extends StatelessWidget {
-  const TransactionManagementPage({Key? key}) : super(key: key);
+  const TransactionManagementPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +31,7 @@ class TransactionManagementPage extends StatelessWidget {
                         children: [
                           Text('Amount: \$${index * 100}'),
                           Text('Date: ${DateTime.now().subtract(Duration(days: index))}'),
-                          Text('Details: Transaction details here'),
+                          const Text('Details: Transaction details here'),
                           Text('Assigned To: Employee $index'),
                         ],
                       ),

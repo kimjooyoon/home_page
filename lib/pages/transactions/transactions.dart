@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 
 class TransactionsPage extends StatelessWidget {
+  const TransactionsPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Transactions'),
+        title: const Text('Transactions'),
       ),
       body: Padding(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child: ListView.builder(
           itemCount: 10, // 예제 데이터 개수
           itemBuilder: (context, index) {
@@ -21,12 +23,12 @@ class TransactionsPage extends StatelessWidget {
                     Text('Amount: \$${index * 100}'),
                     Text(
                         'Date: ${DateTime.now().subtract(Duration(days: index))}'),
-                    Text('Details: Transaction details here'),
+                    const Text('Details: Transaction details here'),
                     Text('Assigned To: Employee $index'),
                   ],
                 ),
                 trailing: IconButton(
-                  icon: Icon(Icons.edit),
+                  icon: const Icon(Icons.edit),
                   onPressed: () {
                     // 거래 수정 로직
                   },

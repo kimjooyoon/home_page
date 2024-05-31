@@ -5,13 +5,13 @@ import 'package:home_page/services/project_service.dart';
 import 'package:home_page/pages/project_detail/project_detail.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+  const HomePage({super.key});
 
   @override
-  _HomePageState createState() => _HomePageState();
+  HomePageState createState() => HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class HomePageState extends State<HomePage> {
   late Future<List<Project>> futureProjects;
 
   @override
@@ -47,11 +47,11 @@ class _HomePageState extends State<HomePage> {
                 future: futureProjects,
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
-                    return Center(child: CircularProgressIndicator());
+                    return const Center(child: CircularProgressIndicator());
                   } else if (snapshot.hasError) {
                     return Center(child: Text('Error: ${snapshot.error}'));
                   } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-                    return Center(child: Text('No projects available'));
+                    return const Center(child: Text('No projects available'));
                   } else {
                     return ListView.builder(
                       itemCount: snapshot.data!.length,

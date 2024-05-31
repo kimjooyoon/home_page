@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 
 class ChatPage extends StatelessWidget {
+  const ChatPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Customer Support'),
+        title: const Text('Customer Support'),
       ),
       body: Padding(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
             Expanded(
@@ -17,23 +19,23 @@ class ChatPage extends StatelessWidget {
                 itemBuilder: (context, index) {
                   return ListTile(
                     title: Text('Customer Message #$index'),
-                    subtitle: Text('Message content here...'),
+                    subtitle: const Text('Message content here...'),
                   );
                 },
               ),
             ),
-            TextField(
+            const TextField(
               decoration: InputDecoration(
                 labelText: 'Type your message',
                 border: OutlineInputBorder(),
               ),
             ),
-            SizedBox(height: 8.0),
+            const SizedBox(height: 8.0),
             ElevatedButton(
               onPressed: () {
                 // 메일 전송 로직
               },
-              child: Text('Send Message'),
+              child: const Text('Send Message'),
             ),
           ],
         ),

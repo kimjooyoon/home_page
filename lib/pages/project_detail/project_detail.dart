@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class ProjectDetailPage extends StatelessWidget {
   final String projectName;
 
-  const ProjectDetailPage({Key? key, required this.projectName}) : super(key: key);
+  const ProjectDetailPage({super.key, required this.projectName});
 
   @override
   Widget build(BuildContext context) {
