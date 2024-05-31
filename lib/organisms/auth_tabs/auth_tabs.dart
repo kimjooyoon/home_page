@@ -3,11 +3,13 @@ import 'package:home_page/molecules/login_form/login_form.dart';
 import 'package:home_page/molecules/sign_up_form/sign_up_form.dart';
 
 class AuthTabs extends StatefulWidget {
+  const AuthTabs({super.key});
+
   @override
-  _AuthTabsState createState() => _AuthTabsState();
+  AuthTabsState createState() => AuthTabsState();
 }
 
-class _AuthTabsState extends State<AuthTabs> with SingleTickerProviderStateMixin {
+class AuthTabsState extends State<AuthTabs> with SingleTickerProviderStateMixin {
   late TabController _tabController;
 
   @override
@@ -29,13 +31,12 @@ class _AuthTabsState extends State<AuthTabs> with SingleTickerProviderStateMixin
       children: [
         TabBar(
           controller: _tabController,
-          indicatorColor: Colors.white,
-          tabs: [
+          indicatorColor: Theme.of(context).indicatorColor,
+          tabs: const [
             Tab(text: 'Login'),
             Tab(text: 'Sign Up'),
           ],
         ),
-
         Expanded(
           child: TabBarView(
             controller: _tabController,
