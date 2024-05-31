@@ -12,10 +12,10 @@ class SignUpForm extends StatelessWidget {
   final VoidCallback onGoogleSignUp;
 
   SignUpForm({
-    Key? key,
+    super.key,
     required this.onSignUp,
     required this.onGoogleSignUp,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

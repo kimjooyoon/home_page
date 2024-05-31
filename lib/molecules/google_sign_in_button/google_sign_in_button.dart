@@ -6,11 +6,11 @@ class GoogleSignInButton extends StatelessWidget {
   final double buttonHeight;
 
   const GoogleSignInButton({
-    Key? key,
+    super.key,
     required this.onPressed,
     required this.buttonWidth,
     required this.buttonHeight,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +33,7 @@ class GoogleSignInButton extends StatelessWidget {
                 height: 24,
               ),
               const SizedBox(width: 8),
-              Text(
+              const Text(
                 'Continue with Google',
                 style: TextStyle(
                   color: Colors.black,
