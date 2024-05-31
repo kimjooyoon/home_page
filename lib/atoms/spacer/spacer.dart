@@ -10,18 +10,15 @@ class VerticalSpacer extends StatelessWidget {
   Widget build(BuildContext context) {
     final customTheme = Theme.of(context).extension<CustomThemeExtension>();
 
-    if (customTheme == null) {
-      return SizedBox(height: height);
-    }
-
     double spacing = height;
-
-    if (height == 8.0) {
-      spacing = customTheme.smallSpacing;
-    } else if (height == 16.0) {
-      spacing = customTheme.mediumSpacing;
-    } else if (height == 32.0) {
-      spacing = customTheme.largeSpacing;
+    if (customTheme != null) {
+      if (height == 8.0) {
+        spacing = customTheme.smallSpacing;
+      } else if (height == 16.0) {
+        spacing = customTheme.mediumSpacing;
+      } else if (height == 32.0) {
+        spacing = customTheme.largeSpacing;
+      }
     }
 
     return SizedBox(height: spacing);

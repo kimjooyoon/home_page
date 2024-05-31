@@ -20,6 +20,8 @@ class LoginForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     return Column(
       mainAxisSize: MainAxisSize.min,
       mainAxisAlignment: MainAxisAlignment.center,
@@ -45,20 +47,16 @@ class LoginForm extends StatelessWidget {
           height: buttonHeight,
           child: ElevatedButton(
             style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.white,
+              backgroundColor: theme.colorScheme.surface,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(8.0),
-                side: const BorderSide(color: Colors.grey),
+                side: BorderSide(color: theme.dividerColor),
               ),
             ),
             onPressed: onLogin,
-            child: const Text(
+            child: Text(
               'Login',
-              style: TextStyle(
-                color: Colors.black,
-                fontFamily: 'Roboto',
-                fontWeight: FontWeight.w500,
-              ),
+              style: theme.textTheme.bodyLarge?.copyWith(color: theme.colorScheme.onSurface),
             ),
           ),
         ),
