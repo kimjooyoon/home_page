@@ -1,17 +1,20 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
-import 'package:home_page/atoms/theme/design_tokens.dart';
 import 'package:home_page/atoms/utils/build_title_widgets.dart';
 
 class BarChartAtom extends StatelessWidget {
   final List<BarChartGroupData> barGroups;
 
-  const BarChartAtom({Key? key, required this.barGroups}) : super(key: key);
+  const BarChartAtom({super.key, required this.barGroups});
 
   @override
   Widget build(BuildContext context) {
-    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
-    final barColor = isDarkMode ? DesignTokens.bodyText1.color : DesignTokens.primaryColor;
+    final theme = Theme.of(context);
+    final isDarkMode = theme.brightness == Brightness.dark;
+    final barColor = theme.primaryColor;
+    final gridColor = isDarkMode ? theme.dividerColor : theme.dividerColor;
+    final borderColor = isDarkMode ? theme.dividerColor : theme.dividerColor;
+    final textColor = theme.textTheme.bodyLarge?.color ?? Colors.black;
 
     return BarChart(
       BarChartData(
@@ -19,13 +22,13 @@ class BarChartAtom extends StatelessWidget {
           show: true,
           getDrawingHorizontalLine: (value) {
             return FlLine(
-              color: isDarkMode ? DesignTokens.darkModeGridColor : DesignTokens.lightModeGridColor,
+              color: gridColor,
               strokeWidth: 1,
             );
           },
           getDrawingVerticalLine: (value) {
             return FlLine(
-              color: isDarkMode ? DesignTokens.darkModeGridColor : DesignTokens.lightModeGridColor,
+              color: gridColor,
               strokeWidth: 1,
             );
           },
@@ -34,7 +37,7 @@ class BarChartAtom extends StatelessWidget {
           leftTitles: AxisTitles(
             sideTitles: SideTitles(
               showTitles: true,
-              getTitlesWidget: (value, meta) => buildTitleWidgets(value, meta, isLeftTitle: true),
+              getTitlesWidget: (value, meta) => buildTitleWidgets(value, meta, isLeftTitle: true, textColor: textColor),
               interval: 1,
               reservedSize: 28,
             ),
@@ -42,17 +45,17 @@ class BarChartAtom extends StatelessWidget {
           bottomTitles: AxisTitles(
             sideTitles: SideTitles(
               showTitles: true,
-              getTitlesWidget: buildTitleWidgets,
+              getTitlesWidget: (value, meta) => buildTitleWidgets(value, meta, textColor: textColor),
               interval: 1,
             ),
           ),
-          topTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
-          rightTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
+          topTitles: const AxisTitles(sideTitles: SideTitles(showTitles: false)),
+          rightTitles: const AxisTitles(sideTitles: SideTitles(showTitles: false)),
         ),
         borderData: FlBorderData(
           show: true,
           border: Border.all(
-            color: isDarkMode ? DesignTokens.darkModeBorderColor : DesignTokens.lightModeBorderColor,
+            color: borderColor,
             width: 1,
           ),
         ),
