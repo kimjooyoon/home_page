@@ -5,13 +5,13 @@ import 'package:home_page/services/chart_data_provider.dart';
 class LineChartMolecule extends StatelessWidget {
   final ChartDataProvider dataProvider;
 
-  const LineChartMolecule({Key? key, required this.dataProvider}) : super(key: key);
+  const LineChartMolecule({super.key, required this.dataProvider});
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Text('Line Chart Example', style: Theme.of(context).textTheme.headline6),
+        Text('Line Chart Example', style: Theme.of(context).textTheme.titleLarge),
         SizedBox(
           height: 200,
           child: LineChartAtom(
