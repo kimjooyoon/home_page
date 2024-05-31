@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:home_page/atoms/spacer/vertical_spacer.dart';
+import 'package:home_page/atoms/text/title_text.dart';
+import 'package:home_page/organisms/lists/customer_list.dart';
 
 class CustomerManagementPage extends StatelessWidget {
   const CustomerManagementPage({super.key});
+
+  void _editCustomer() {
+    // 고객사 수정 로직
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -14,35 +21,12 @@ class CustomerManagementPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
-              'Manage Customers',
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(height: 16),
+            const TitleText(text: 'Manage Customers'),
+            const VerticalSpacer(size: SpacerSize.medium),
             Expanded(
-              child: ListView.builder(
+              child: CustomerList(
                 itemCount: 10, // 임시 데이터 수
-                itemBuilder: (context, index) {
-                  return Card(
-                    child: ListTile(
-                      title: Text('Customer Company #$index'),
-                      subtitle: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text('Contact: contact$index@example.com'),
-                          const Text('Request: Customer request details here'),
-                          Text('Website: www.customer$index.com'),
-                        ],
-                      ),
-                      trailing: IconButton(
-                        icon: const Icon(Icons.edit),
-                        onPressed: () {
-                          // 고객사 수정 로직
-                        },
-                      ),
-                    ),
-                  );
-                },
+                onEdit: _editCustomer,
               ),
             ),
           ],

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:home_page/molecules/google_sign_in_button/google_sign_in_button.dart';
-import 'package:home_page/atoms/spacer/spacer.dart';
+import 'package:home_page/atoms/spacer/vertical_spacer.dart';
 
 class SignUpForm extends StatelessWidget {
   final TextEditingController nameController = TextEditingController();

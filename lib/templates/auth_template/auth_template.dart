@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:home_page/atoms/spacer/spacer.dart';
+import 'package:home_page/atoms/spacer/vertical_spacer.dart';
 import 'package:home_page/organisms/auth_forms/auth_forms.dart';
 
 class AuthTemplate extends StatelessWidget {
