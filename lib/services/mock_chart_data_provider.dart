@@ -6,12 +6,12 @@ class MockChartDataProvider implements ChartDataProvider {
   @override
   List<FlSpot> getLineChartData() {
     return [
-      FlSpot(0, 1),
-      FlSpot(1, 3),
-      FlSpot(2, 2),
-      FlSpot(3, 5),
-      FlSpot(4, 4),
-      FlSpot(5, 7),
+      const FlSpot(0, 1),
+      const FlSpot(1, 3),
+      const FlSpot(2, 2),
+      const FlSpot(3, 5),
+      const FlSpot(4, 4),
+      const FlSpot(5, 7),
     ];
   }
 
@@ -53,22 +53,22 @@ class MockChartDataProvider implements ChartDataProvider {
     return [
       RadarDataSet(
         dataEntries: [
-          RadarEntry(value: 1),
-          RadarEntry(value: 3),
-          RadarEntry(value: 5),
-          RadarEntry(value: 7),
-          RadarEntry(value: 9),
+          const RadarEntry(value: 1),
+          const RadarEntry(value: 3),
+          const RadarEntry(value: 5),
+          const RadarEntry(value: 7),
+          const RadarEntry(value: 9),
         ],
         borderColor: Colors.blue,
         fillColor: Colors.blue.withOpacity(0.4),
       ),
       RadarDataSet(
         dataEntries: [
-          RadarEntry(value: 2),
-          RadarEntry(value: 4),
-          RadarEntry(value: 6),
-          RadarEntry(value: 8),
-          RadarEntry(value: 10),
+          const RadarEntry(value: 2),
+          const RadarEntry(value: 4),
+          const RadarEntry(value: 6),
+          const RadarEntry(value: 8),
+          const RadarEntry(value: 10),
         ],
         borderColor: Colors.red,
         fillColor: Colors.red.withOpacity(0.4),
