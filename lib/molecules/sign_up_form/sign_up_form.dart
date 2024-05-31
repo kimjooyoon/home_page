@@ -23,7 +23,7 @@ class SignUpForm extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        VerticalSpacer(height: 16.0), // 탭과 폼 사이의 여백 추가
+        const VerticalSpacer(size: SpacerSize.medium),
         TextField(
           controller: nameController,
           decoration: InputDecoration(
@@ -36,7 +36,7 @@ class SignUpForm extends StatelessWidget {
             ),
           ),
         ),
-        VerticalSpacer(height: 16.0),
+        const VerticalSpacer(size: SpacerSize.medium),
         TextField(
           controller: emailController,
           decoration: InputDecoration(
@@ -49,7 +49,7 @@ class SignUpForm extends StatelessWidget {
             ),
           ),
         ),
-        VerticalSpacer(height: 16.0),
+        const VerticalSpacer(size: SpacerSize.medium),
         TextField(
           controller: passwordController,
           obscureText: true,
@@ -63,8 +63,8 @@ class SignUpForm extends StatelessWidget {
             ),
           ),
         ),
-        VerticalSpacer(height: 32.0),
-        Container(
+        const VerticalSpacer(size: SpacerSize.large),
+        SizedBox(
           width: buttonWidth,
           height: buttonHeight,
           child: ElevatedButton(
@@ -72,7 +72,7 @@ class SignUpForm extends StatelessWidget {
               backgroundColor: Colors.white,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(8.0),
-                side: BorderSide(color: Colors.grey),
+                side: const BorderSide(color: Colors.grey),
               ),
             ),
             onPressed: onSignUp,
@@ -86,7 +86,7 @@ class SignUpForm extends StatelessWidget {
             ),
           ),
         ),
-        VerticalSpacer(height: 16.0),
+        const VerticalSpacer(size: SpacerSize.medium),
         GoogleSignInButton(
           onPressed: onGoogleSignUp,
           buttonWidth: buttonWidth,

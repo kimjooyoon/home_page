@@ -13,21 +13,20 @@ class CustomButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final borderRadius = (theme.buttonTheme.shape as RoundedRectangleBorder).borderRadius;
-    final textColor = theme.textTheme.labelLarge?.color ?? Colors.white;
 
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
         backgroundColor: theme.primaryColor,
         shape: RoundedRectangleBorder(
-          borderRadius: borderRadius,
+          borderRadius: BorderRadius.circular(8.0), // 또는 다른 적절한 값을 사용
+          side: BorderSide(color: theme.dividerColor),
         ),
-        padding: EdgeInsets.all(theme.buttonTheme.padding.horizontal),
+        padding: EdgeInsets.symmetric(vertical: theme.buttonTheme.padding.vertical),
       ),
       onPressed: onPressed,
       child: Text(
         text,
-        style: theme.textTheme.labelLarge?.copyWith(color: textColor),
+        style: theme.textTheme.labelLarge?.copyWith(color: theme.textTheme.bodyLarge?.color),
       ),
     );
   }

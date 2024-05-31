@@ -1,24 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:home_page/atoms/theme/custom_theme_extension.dart';
 
-class VerticalSpacer extends StatelessWidget {
-  final double height;
+enum SpacerSize { small, medium, large }
 
-  const VerticalSpacer({super.key, required this.height});
+class VerticalSpacer extends StatelessWidget {
+  final SpacerSize size;
+
+  const VerticalSpacer({super.key, required this.size});
 
   @override
   Widget build(BuildContext context) {
     final customTheme = Theme.of(context).extension<CustomThemeExtension>();
 
-    double spacing = height;
-    if (customTheme != null) {
-      if (height == 8.0) {
-        spacing = customTheme.smallSpacing;
-      } else if (height == 16.0) {
-        spacing = customTheme.mediumSpacing;
-      } else if (height == 32.0) {
-        spacing = customTheme.largeSpacing;
-      }
+    // 기본값을 설정
+    double spacing;
+    switch (size) {
+      case SpacerSize.small:
+        spacing = customTheme?.smallSpacing ?? 8.0;
+        break;
+      case SpacerSize.medium:
+        spacing = customTheme?.mediumSpacing ?? 16.0;
+        break;
+      case SpacerSize.large:
+        spacing = customTheme?.largeSpacing ?? 32.0;
+        break;
     }
 
     return SizedBox(height: spacing);

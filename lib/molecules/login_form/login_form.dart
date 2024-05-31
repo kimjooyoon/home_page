@@ -3,6 +3,7 @@ import 'package:home_page/atoms/input/custom_input.dart';
 import 'package:home_page/molecules/password/password.dart';
 import 'package:home_page/molecules/google_sign_in_button/google_sign_in_button.dart';
 import 'package:home_page/atoms/spacer/spacer.dart';
+import 'package:home_page/atoms/button/custom_button.dart';
 
 class LoginForm extends StatelessWidget {
   final TextEditingController emailController = TextEditingController();
@@ -20,13 +21,11 @@ class LoginForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-
     return Column(
       mainAxisSize: MainAxisSize.min,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        const VerticalSpacer(height: 16.0),
+        const VerticalSpacer(size: SpacerSize.medium),
         ConstrainedBox(
           constraints: const BoxConstraints(maxWidth: 450),
           child: CustomInput(
@@ -36,37 +35,27 @@ class LoginForm extends StatelessWidget {
             hintText: 'Enter your email',
           ),
         ),
-        const VerticalSpacer(height: 16.0),
+        const VerticalSpacer(size: SpacerSize.medium),
         ConstrainedBox(
           constraints: const BoxConstraints(maxWidth: 450),
           child: PasswordInput(controller: passwordController),
         ),
-        const VerticalSpacer(height: 32.0),
+        const VerticalSpacer(size: SpacerSize.large),
         SizedBox(
           width: buttonWidth,
           height: buttonHeight,
-          child: ElevatedButton(
-            style: ElevatedButton.styleFrom(
-              backgroundColor: theme.colorScheme.surface,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(8.0),
-                side: BorderSide(color: theme.dividerColor),
-              ),
-            ),
+          child: CustomButton(
+            text: 'Login',
             onPressed: onLogin,
-            child: Text(
-              'Login',
-              style: theme.textTheme.bodyLarge?.copyWith(color: theme.colorScheme.onSurface),
-            ),
           ),
         ),
-        const VerticalSpacer(height: 16.0),
+        const VerticalSpacer(size: SpacerSize.medium),
         GoogleSignInButton(
           onPressed: onGoogleLogin,
           buttonWidth: buttonWidth,
           buttonHeight: buttonHeight,
         ),
-        const VerticalSpacer(height: 16.0),
+        const VerticalSpacer(size: SpacerSize.medium),
         TextButton(
           onPressed: () {
             // Handle forgot password

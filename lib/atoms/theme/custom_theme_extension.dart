@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'dart:ui' show lerpDouble;
 
 class CustomThemeExtension extends ThemeExtension<CustomThemeExtension> {
   final double smallSpacing;
@@ -30,11 +29,17 @@ class CustomThemeExtension extends ThemeExtension<CustomThemeExtension> {
     if (other is! CustomThemeExtension) {
       return this;
     }
-
     return CustomThemeExtension(
-      smallSpacing: lerpDouble(smallSpacing, other.smallSpacing, t)!,
-      mediumSpacing: lerpDouble(mediumSpacing, other.mediumSpacing, t)!,
-      largeSpacing: lerpDouble(largeSpacing, other.largeSpacing, t)!,
+      smallSpacing: lerpDouble(smallSpacing, other.smallSpacing, t),
+      mediumSpacing: lerpDouble(mediumSpacing, other.mediumSpacing, t),
+      largeSpacing: lerpDouble(largeSpacing, other.largeSpacing, t),
     );
   }
+}
+
+double lerpDouble(num? a, num? b, double t) {
+  if (a == null && b == null) return 0.0;
+  if (a == null) return b! * t;
+  if (b == null) return a * (1.0 - t);
+  return a + (b - a) * t;
 }

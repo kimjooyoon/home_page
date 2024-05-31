@@ -39,7 +39,7 @@ class AuthTemplate extends StatelessWidget {
                     'assets/images/logo.svg',
                     height: 100,
                   ),
-                  const VerticalSpacer(height: 32.0),
+                  const VerticalSpacer(size: SpacerSize.large),
                   Expanded(
                     child: DefaultTabController(
                       length: 2,
