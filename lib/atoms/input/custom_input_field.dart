@@ -9,23 +9,33 @@ class CustomInputField extends StatelessWidget {
     required this.labelText,
     this.obscureText = false,
     this.controller,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return TextField(
       controller: controller,
       obscureText: obscureText,
       decoration: InputDecoration(
         labelText: labelText,
-        fillColor: Colors.white.withOpacity(0.8),
+        fillColor: theme.inputDecorationTheme.fillColor ?? Colors.white.withOpacity(0.8),
         filled: true,
-        border: OutlineInputBorder(
+        border: theme.inputDecorationTheme.border ?? OutlineInputBorder(
+          borderRadius: BorderRadius.circular(8.0),
+          borderSide: BorderSide.none,
+        ),
+        enabledBorder: theme.inputDecorationTheme.enabledBorder ?? OutlineInputBorder(
+          borderRadius: BorderRadius.circular(8.0),
+          borderSide: BorderSide.none,
+        ),
+        focusedBorder: theme.inputDecorationTheme.focusedBorder ?? OutlineInputBorder(
           borderRadius: BorderRadius.circular(8.0),
           borderSide: BorderSide.none,
         ),
       ),
+      style: theme.textTheme.bodyLarge,
     );
   }
 }

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:home_page/atoms/theme/design_tokens.dart';
 
 class CustomInput extends StatelessWidget {
   final TextEditingController controller;
@@ -11,7 +10,7 @@ class CustomInput extends StatelessWidget {
   final void Function(String)? onChanged;
 
   const CustomInput({
-    Key? key,
+    super.key,
     required this.controller,
     required this.labelText,
     this.hintText,
@@ -19,10 +18,11 @@ class CustomInput extends StatelessWidget {
     this.keyboardType = TextInputType.text,
     this.validator,
     this.onChanged,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return TextFormField(
       controller: controller,
       obscureText: obscureText,
@@ -30,18 +30,18 @@ class CustomInput extends StatelessWidget {
       decoration: InputDecoration(
         labelText: labelText,
         hintText: hintText,
-        labelStyle: DesignTokens.labelTextStyle,
-        hintStyle: DesignTokens.hintTextStyle,
+        labelStyle: theme.textTheme.bodyLarge?.copyWith(color: theme.hintColor),
+        hintStyle: theme.textTheme.bodyMedium?.copyWith(color: theme.hintColor),
         enabledBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: DesignTokens.borderColor),
-          borderRadius: BorderRadius.circular(DesignTokens.borderRadius),
+          borderSide: BorderSide(color: theme.dividerColor),
+          borderRadius: BorderRadius.circular(8.0),
         ),
         focusedBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: DesignTokens.focusedBorderColor),
-          borderRadius: BorderRadius.circular(DesignTokens.borderRadius),
+          borderSide: BorderSide(color: theme.primaryColor),
+          borderRadius: BorderRadius.circular(8.0),
         ),
       ),
-      style: DesignTokens.inputTextStyle,
+      style: theme.textTheme.bodyLarge?.copyWith(color: theme.textTheme.bodyLarge?.color),
       validator: validator,
       onChanged: onChanged,
     );
