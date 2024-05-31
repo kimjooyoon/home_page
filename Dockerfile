@@ -19,8 +19,14 @@ FROM nginx:alpine
 # Copy the built web application from the build stage to the Nginx html directory
 COPY --from=build /app/build/web /usr/share/nginx/html
 
+COPY ./nginx.conf /etc/nginx/nginx.conf
+
+# Copy SSL certificates
+COPY stargaser_ssl/certificate.crt /etc/ssl/certificate.crt
+COPY stargaser_ssl/private.key /etc/ssl/private.key
+
 # Expose port 80 to the outside world
-EXPOSE 80
+EXPOSE 80 443
 
 # Start Nginx server
 CMD ["nginx", "-g", "daemon off;"]
