@@ -8,7 +8,7 @@ class AuthForms extends StatelessWidget {
   final VoidCallback onGoogleLogin;
   final VoidCallback onGoogleSignUp;
 
-  const AuthForms({
+  const AuthForms({super.key,
     required this.onLogin,
     required this.onSignUp,
     required this.onGoogleLogin,
