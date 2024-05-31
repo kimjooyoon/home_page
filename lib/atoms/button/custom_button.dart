@@ -1,26 +1,33 @@
 import 'package:flutter/material.dart';
-import 'package:home_page/atoms/theme/design_tokens.dart';
 
 class CustomButton extends StatelessWidget {
   final String text;
   final VoidCallback onPressed;
 
-  const CustomButton({Key? key, required this.text, required this.onPressed}) : super(key: key);
+  const CustomButton({
+    super.key,
+    required this.text,
+    required this.onPressed,
+  });
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final borderRadius = (theme.buttonTheme.shape as RoundedRectangleBorder).borderRadius;
+    final textColor = theme.textTheme.labelLarge?.color ?? Colors.white;
+
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        backgroundColor: DesignTokens.primaryColor,
+        backgroundColor: theme.primaryColor,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(DesignTokens.borderRadius),
+          borderRadius: borderRadius,
         ),
-        padding: EdgeInsets.all(DesignTokens.padding),
+        padding: EdgeInsets.all(theme.buttonTheme.padding.horizontal),
       ),
       onPressed: onPressed,
       child: Text(
         text,
-        style: DesignTokens.bodyText1.copyWith(color: Colors.white),
+        style: theme.textTheme.labelLarge?.copyWith(color: textColor),
       ),
     );
   }
