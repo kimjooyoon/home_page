@@ -21,6 +21,7 @@ class SignUpForm extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       mainAxisSize: MainAxisSize.min,
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         VerticalSpacer(height: 16.0), // 탭과 폼 사이의 여백 추가
         TextField(
