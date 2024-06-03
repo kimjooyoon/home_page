@@ -16,12 +16,14 @@ class NavigationLayout extends StatefulWidget {
   final int initialIndex;
   final bool isAdmin;
   final VoidCallback toggleTheme; // 테마 토글 콜백 함수
+  final VoidCallback onLogout;
 
   const NavigationLayout({
     super.key,
     this.initialIndex = 0,
     required this.isAdmin,
     required this.toggleTheme, // 생성자에 추가
+    required this.onLogout
   });
 
   @override
@@ -59,6 +61,7 @@ class NavigationLayoutState extends State<NavigationLayout> {
   }
 
   void _logout() async {
+    widget.onLogout();
     await AuthService().logout();
     if (!mounted) return;
     Navigator.pushReplacementNamed(context, '/auth');

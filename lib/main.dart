@@ -17,13 +17,20 @@ class _MyAppState extends State<MyApp> {
 
   void _toggleTheme() {
     setState(() {
-      _themeMode = _themeMode == ThemeMode.light ? ThemeMode.dark : ThemeMode.light;
+      _themeMode =
+          _themeMode == ThemeMode.light ? ThemeMode.dark : ThemeMode.light;
     });
   }
 
   void _setLightMode() {
     setState(() {
       _themeMode = ThemeMode.light;
+    });
+  }
+
+  void _setDarkMode() {
+    setState(() {
+      _themeMode = ThemeMode.dark;
     });
   }
 
@@ -38,9 +45,10 @@ class _MyAppState extends State<MyApp> {
       routes: {
         '/auth': (context) => AuthPage(onLogin: _setLightMode),
         '/navigation': (context) => NavigationLayout(
-          isAdmin: true,
-          toggleTheme: _toggleTheme, // 테마 토글 함수 전달
-        ),
+              isAdmin: true,
+              toggleTheme: _toggleTheme, // 테마 토글 함수 전달
+              onLogout: _setDarkMode,
+            ),
       },
     );
   }
