@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:home_page/organisms/lists/customer_account_list.dart';
 
 class CustomerAccountManagementPage extends StatelessWidget {
   const CustomerAccountManagementPage({super.key});
@@ -11,21 +12,10 @@ class CustomerAccountManagementPage extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: ListView.builder(
-          itemCount: 10, // 예제 데이터 개수
-          itemBuilder: (context, index) {
-            return Card(
-              child: ListTile(
-                title: Text('Customer #$index'),
-                subtitle: const Text('Customer details here...'),
-                trailing: IconButton(
-                  icon: const Icon(Icons.edit),
-                  onPressed: () {
-                    // 고객 계정 수정 로직
-                  },
-                ),
-              ),
-            );
+        child: CustomerAccountList(
+          itemCount: 10,
+          onEdit: () {
+            // 고객 계정 수정 로직
           },
         ),
       ),
