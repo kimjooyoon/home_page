@@ -1,4 +1,6 @@
+// pages/transactions_page.dart
 import 'package:flutter/material.dart';
+import 'package:home_page/molecules/cards/transaction_card.dart';
 
 class TransactionsPage extends StatelessWidget {
   const TransactionsPage({super.key});
@@ -14,26 +16,11 @@ class TransactionsPage extends StatelessWidget {
         child: ListView.builder(
           itemCount: 10, // 예제 데이터 개수
           itemBuilder: (context, index) {
-            return Card(
-              child: ListTile(
-                title: Text('Transaction #$index'),
-                subtitle: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text('Amount: \$${index * 100}'),
-                    Text(
-                        'Date: ${DateTime.now().subtract(Duration(days: index))}'),
-                    const Text('Details: Transaction details here'),
-                    Text('Assigned To: Employee $index'),
-                  ],
-                ),
-                trailing: IconButton(
-                  icon: const Icon(Icons.edit),
-                  onPressed: () {
-                    // 거래 수정 로직
-                  },
-                ),
-              ),
+            return TransactionCard(
+              index: index,
+              onEdit: () {
+                // 거래 수정 로직
+              },
             );
           },
         ),

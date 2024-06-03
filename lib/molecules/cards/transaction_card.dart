@@ -1,6 +1,6 @@
+// molecules/transaction_card.dart
 import 'package:flutter/material.dart';
-import 'package:home_page/atoms/title/transaction_title.dart';
-import 'package:home_page/atoms/title/transaction_subtitle.dart';
+import 'package:home_page/atoms/text/transaction_text.dart';
 
 class TransactionCard extends StatelessWidget {
   final int index;
@@ -12,14 +12,14 @@ class TransactionCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       child: ListTile(
-        title: TransactionTitle(title: 'Transaction #$index'),
+        title: Text('Transaction #$index'),
         subtitle: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            TransactionSubtitle(subtitle: 'Amount: \$${index * 100}'),
-            TransactionSubtitle(subtitle: 'Date: ${DateTime.now().subtract(Duration(days: index))}'),
-            const TransactionSubtitle(subtitle: 'Details: Transaction details here'),
-            TransactionSubtitle(subtitle: 'Assigned To: Employee $index'),
+            TransactionText(content: 'Amount: \$${index * 100}'),
+            TransactionText(content: 'Date: ${DateTime.now().subtract(Duration(days: index))}'),
+            const TransactionText(content: 'Details: Transaction details here'),
+            TransactionText(content: 'Assigned To: Employee $index'),
           ],
         ),
         trailing: IconButton(
