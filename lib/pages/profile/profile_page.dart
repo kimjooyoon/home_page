@@ -1,4 +1,7 @@
+// pages/profile_page.dart
 import 'package:flutter/material.dart';
+import 'package:home_page/templates/base/base_template.dart';
+import 'package:home_page/organisms/form/profile_form.dart';
 import 'package:home_page/models/profile/profile.dart';
 import 'package:home_page/services/profile/profile_service.dart';
 
@@ -38,11 +41,9 @@ class ProfilePageState extends State<ProfilePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Profile'),
-      ),
-      body: FutureBuilder<Profile>(
+    return BaseTemplate(
+      title: 'Profile',
+      child: FutureBuilder<Profile>(
         future: futureProfile,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
@@ -52,46 +53,11 @@ class ProfilePageState extends State<ProfilePage> {
           } else if (!snapshot.hasData) {
             return const Center(child: Text('No profile information available'));
           } else {
-            return Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  const Text(
-                    'Profile Information',
-                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-                  ),
-                  const SizedBox(height: 20),
-                  TextField(
-                    controller: nameController,
-                    decoration: const InputDecoration(
-                      labelText: 'Name',
-                      border: OutlineInputBorder(),
-                    ),
-                  ),
-                  const SizedBox(height: 16),
-                  TextField(
-                    controller: emailController,
-                    decoration: const InputDecoration(
-                      labelText: 'Email',
-                      border: OutlineInputBorder(),
-                    ),
-                  ),
-                  const SizedBox(height: 16),
-                  TextField(
-                    controller: phoneNumberController,
-                    decoration: const InputDecoration(
-                      labelText: 'Phone Number',
-                      border: OutlineInputBorder(),
-                    ),
-                  ),
-                  const SizedBox(height: 32),
-                  ElevatedButton(
-                    onPressed: _saveProfile,
-                    child: const Text('Save'),
-                  ),
-                ],
-              ),
+            return ProfileForm(
+              nameController: nameController,
+              emailController: emailController,
+              phoneNumberController: phoneNumberController,
+              onSave: _saveProfile,
             );
           }
         },
