@@ -1,46 +1,20 @@
+// pages/sign_up_page.dart
 import 'package:flutter/material.dart';
+import 'package:home_page/templates/base/base_template.dart';
+import 'package:home_page/molecules/form/sign_up_form.dart';
 
 class SignUpPage extends StatelessWidget {
   const SignUpPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Sign Up'),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Text(
-              'Create Account',
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(height: 16),
-            const TextField(
-              decoration: InputDecoration(labelText: 'Name'),
-            ),
-            const SizedBox(height: 16),
-            const TextField(
-              decoration: InputDecoration(labelText: 'Email'),
-            ),
-            const SizedBox(height: 16),
-            const TextField(
-              obscureText: true,
-              decoration: InputDecoration(labelText: 'Password'),
-            ),
-            const SizedBox(height: 16),
-            ElevatedButton(
-              onPressed: () {
-                // 회원가입 로직
-                Navigator.pushReplacementNamed(context, '/login');
-              },
-              child: const Text('Sign Up'),
-            ),
-          ],
-        ),
+    return BaseTemplate(
+      title: 'Sign Up',
+      child: SignUpForm(
+        onSignUp: () {
+          // 회원가입 로직
+          Navigator.pushReplacementNamed(context, '/login');
+        },
       ),
     );
   }
