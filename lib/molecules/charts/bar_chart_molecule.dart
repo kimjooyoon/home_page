@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:home_page/atoms/charts/bar_chart_atom.dart';
-import 'package:home_page/services/chart_data_provider.dart';
+import 'package:home_page/services/chart/chart_data_provider.dart';
 
 class BarChartMolecule extends StatelessWidget {
   final ChartDataProvider dataProvider;

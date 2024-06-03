@@ -10,7 +10,7 @@ import 'package:home_page/pages/admin/customer_management.dart';
 import 'package:home_page/pages/admin/transaction_management.dart';
 import 'package:home_page/pages/admin/meeting_details.dart';
 import 'package:home_page/pages/admin/dashboard_charts.dart';
-import 'package:home_page/services/auth_service.dart';
+import 'package:home_page/services/login/auth_service.dart';
 
 class NavigationLayout extends StatefulWidget {
   final int initialIndex;

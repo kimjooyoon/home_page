@@ -1,4 +1,4 @@
-import 'package:home_page/models/project.dart';
+import 'package:home_page/models/project/project.dart';
 
 List<Project> getMockProjects() {
   return [

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:home_page/molecules/project_card/project_card.dart';
-import 'package:home_page/models/project.dart';
-import 'package:home_page/services/project_service.dart';
+import 'package:home_page/models/project/project.dart';
+import 'package:home_page/services/project/project_service.dart';
 import 'package:home_page/pages/project_detail/project_detail.dart';
 
 class HomePage extends StatefulWidget {

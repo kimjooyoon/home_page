@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:home_page/models/profile.dart';
-import 'package:home_page/services/profile_service.dart';
+import 'package:home_page/models/profile/profile.dart';
+import 'package:home_page/services/profile/profile_service.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});

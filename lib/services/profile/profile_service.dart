@@ -1,8 +1,8 @@
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-import 'package:home_page/models/profile.dart';
+import 'package:home_page/models/profile/profile.dart';
 import 'package:home_page/config/env.dart';
-import 'package:home_page/data/mock_profile.dart';
+import 'package:home_page/data/profile/mock_profile.dart';
 
 class ProfileService {
   final String baseUrl = 'https://api.example.com';

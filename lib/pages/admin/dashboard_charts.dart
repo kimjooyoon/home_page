@@ -4,7 +4,7 @@ import 'package:home_page/molecules/charts/bar_chart_molecule.dart';
 import 'package:home_page/molecules/charts/pie_chart_molecule.dart';
 import 'package:home_page/molecules/charts/scatter_chart_molecule.dart';
 import 'package:home_page/molecules/charts/radar_chart_molecule.dart';
-import 'package:home_page/services/mock_chart_data_provider.dart';
+import 'package:home_page/services/chart/mock_chart_data_provider.dart';
 
 class DashboardChartsPage extends StatelessWidget {
   const DashboardChartsPage({super.key});

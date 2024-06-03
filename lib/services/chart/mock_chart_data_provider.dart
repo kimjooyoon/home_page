@@ -1,6 +1,6 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
-import 'package:home_page/services/chart_data_provider.dart';
+import 'package:home_page/services/chart/chart_data_provider.dart';
 
 class MockChartDataProvider implements ChartDataProvider {
   @override
