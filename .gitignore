@@ -41,3 +41,6 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+/stargaser_ssl/certificate.crt
+/stargaser_ssl/private.key

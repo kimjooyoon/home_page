@@ -12,5 +12,8 @@ services:
     image: registry:2
     ports:
       - "5000:5000"
+    volumes:
+      - ./data:/data
     environment:
+      REGISTRY_STORAGE_FILESYSTEM_ROOTDIRECTORY: /data
       REGISTRY_HTTP_SECRET:
