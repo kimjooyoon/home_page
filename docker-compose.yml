@@ -1,6 +1,16 @@
 version: '3.8'
 services:
   flutter-web:
-    image: test-web:0.1
+    image: test-web:0.9
     ports:
       - "80:80"
+      - "443:443"
+    depends_on:
+      - registry
+  registry:
+    restart: always
+    image: registry:2
+    ports:
+      - "5000:5000"
+    environment:
+      REGISTRY_HTTP_SECRET:
