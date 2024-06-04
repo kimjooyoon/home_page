@@ -7,6 +7,30 @@ services:
       - "443:443"
     depends_on:
       - registry
+  api:
+    image: www.stargaser.co.kr/api:0.1
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+    environment:
+      # 여기서 호스트 이름은 db의 이름으로 해야함
+      - SPRING_DATASOURCE_URL=jdbc:mariadb://db:3306/sttest
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=1234
+  db:
+    image: mariadb
+    environment:
+      - MYSQL_ROOT_PASSWORD:1234
+      - MYSQL_DATABASE=sttest
+    labels:
+      org.springframework.boot.service-connection: mariadb
+    ports:
+      - '3306:3306'
+    volumes:
+      - ./db/mysql/data:/var/lib/mysql
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    container_name: db
   registry:
     restart: always
     image: registry:2
