@@ -1,7 +1,7 @@
 version: '3.8'
 services:
   flutter-web:
-    image: www.stargaser.co.kr/flutter-test:1.2
+    image: www.stargaser.co.kr/flutter-test:1.3
     ports:
       - "80:80"
       - "443:443"
@@ -19,10 +19,12 @@ services:
       - SPRING_DATASOURCE_USERNAME=root
       - SPRING_DATASOURCE_PASSWORD=1234
   db:
-    image: mariadb
+    image: mariadb:10.6
     environment:
-      - MYSQL_ROOT_PASSWORD:1234
-      - MYSQL_DATABASE=sttest
+      - MARIADB_DATABASE=sttest
+      - MARIADB_USER=root
+      - MARIADB_PASSWORD=1234
+      - MARIADB_ROOT_PASSWORD=1234
     labels:
       org.springframework.boot.service-connection: mariadb
     ports:
