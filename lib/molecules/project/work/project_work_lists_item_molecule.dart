@@ -8,19 +8,21 @@ import 'package:home_page/atoms/textfields/text_fields_atom.dart';
 import 'package:home_page/atoms/title/title_atom.dart';
 
 class ProjectWorkListsItemMolecule extends StatelessWidget {
-  const ProjectWorkListsItemMolecule({super.key});
+  final String title;
+
+  const ProjectWorkListsItemMolecule({super.key, required this.title});
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
+    return Column(
       children: [
         Column(
           children: [
             Row(
               children: [
                 // title atom
-                TitleAtom(), // fixme: work.TitleInfo
-                Row(
+                TitleAtom(title: title,), // fixme: work.TitleInfo
+                const Row(
                   children: [
                     // fixme: iterator by work.Tags { icon_url:"", text:"", action:()=>{} }
                     TagAtom()
@@ -28,7 +30,7 @@ class ProjectWorkListsItemMolecule extends StatelessWidget {
                 )
               ],
             ),
-            Row(
+            const Row(
               children: [
                 DateText(),
                 Row(
@@ -38,9 +40,9 @@ class ProjectWorkListsItemMolecule extends StatelessWidget {
             )
           ],
         ),
-        TextFieldsAtom(),
+        const TextFieldsAtom(),
         // todo: <<actor: only admin>>
-        Column(
+        const Column(
           children: [
             TextFieldsAtom(),
             Row(

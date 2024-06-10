@@ -15,9 +15,9 @@ class ProjectList extends StatelessWidget {
       itemBuilder: (context, index) {
         final project = projects[index];
         return GestureDetector(
-          onTap: () => onProjectTap(project.name),
+          onTap: () => onProjectTap(project.title),
           child: ProjectOverview(
-            projectName: project.name,
+            projectName: project.title,
             progress: project.progress,
           ),
         );

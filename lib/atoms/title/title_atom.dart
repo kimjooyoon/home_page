@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 
 class TitleAtom extends StatelessWidget {
-  const TitleAtom({super.key});
+  final String title;
+
+  const TitleAtom({super.key, required this.title});
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Text(
+      title,
+      style: Theme.of(context).textTheme.titleLarge,
+    );
   }
 }
