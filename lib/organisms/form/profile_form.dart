@@ -1,7 +1,7 @@
 // organisms/profile_form.dart
 import 'package:flutter/material.dart';
+import 'package:home_page/atoms/button/custom_button.dart';
 import 'package:home_page/molecules/field/profile_info_field.dart';
-import 'package:home_page/atoms/button/save_button.dart';
 
 class ProfileForm extends StatelessWidget {
   final TextEditingController nameController;
@@ -31,7 +31,7 @@ class ProfileForm extends StatelessWidget {
         ProfileInfoField(controller: emailController, labelText: 'Email'),
         ProfileInfoField(controller: phoneNumberController, labelText: 'Phone Number'),
         const SizedBox(height: 32),
-        SaveButton(onPressed: onSave),
+        CustomButton(onPressed: onSave, text: 'Save',),
       ],
     );
   }
