@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:home_page/models/project/project.dart';
+import 'package:home_page/models/token.dart';
 import 'package:home_page/pages/home/home.dart';
 import 'package:home_page/pages/project/project_page.dart';
 import 'package:home_page/pages/about_us/about_us.dart';
@@ -69,9 +70,13 @@ class NavigationLayoutState extends State<NavigationLayout> {
 
   @override
   Widget build(BuildContext context) {
+
+    final Token args = ModalRoute.of(context)!.settings.arguments as Token;
+    String title = 'Home Page, ${args.token}';
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Home Page'),
+        title: Text(title),
         actions: [
           IconButton(
             icon: const Icon(Icons.brightness_6),
