@@ -32,24 +32,27 @@ class AuthPage extends StatelessWidget {
         // Google 로그인 로직
       },
       onGoogleSignUp: () async {
-        String url = 'https://www.stargaser.co.kr/api/';
+        Uri url = Uri.https('www.stargaser.co.kr', 'api/');
         await _launchURL(url);
         // Google 회원가입 로직
         print("get");
-        String url2 = 'https://www.stargaser.co.kr/login/oauth2/code/google';
+        var client = http.Client();
+        var uri2 = Uri.https('www.stargaser.co.kr', 'login/oauth2/code/google');
+        http.Response response =
+            await client.get(uri2).catchError((error) => {print(error)});
 
-        http.Response response = await http.get(Uri.parse(url2));
         onLogin();
-        Navigator.pushReplacementNamed(context, '/navigation',arguments: Token.fromJson(jsonDecode(response.body)) );
+        Navigator.pushReplacementNamed(context, '/navigation',
+            arguments: Token.fromJson(jsonDecode(response.body)));
       },
     );
   }
 }
 
-_launchURL(String url) async {
-  if (await canLaunchUrl(Uri.parse(url))) {
-    await launchUrl(Uri.parse(url));
+_launchURL(Uri url) async {
+  if (await canLaunchUrl(url)) {
+    await launchUrl(url);
   } else {
-    throw 'Could not launch $url';
+    throw 'Could not launch ${url.toString()}';
   }
 }
