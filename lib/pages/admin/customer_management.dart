@@ -22,7 +22,7 @@ class CustomerManagementPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const TitleText(text: 'Manage Customers'),
-            const VerticalSpacer(size: SpacerSize.medium),
+            const VerticalSpacer(size: VSpacerSize.medium),
             Expanded(
               child: CustomerList(
                 itemCount: 10, // 임시 데이터 수

@@ -25,7 +25,7 @@ class ChatPage extends StatelessWidget {
                 border: OutlineInputBorder(),
               ),
             ),
-            const VerticalSpacer(size: SpacerSize.small),
+            const VerticalSpacer(size: VSpacerSize.small),
             CustomButton(
               text: 'Send Message',
               onPressed: () {

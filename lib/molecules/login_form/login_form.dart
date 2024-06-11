@@ -25,7 +25,7 @@ class LoginForm extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        const VerticalSpacer(size: SpacerSize.medium),
+        const VerticalSpacer(size: VSpacerSize.medium),
         ConstrainedBox(
           constraints: const BoxConstraints(maxWidth: 450),
           child: CustomInput(
@@ -35,12 +35,12 @@ class LoginForm extends StatelessWidget {
             hintText: 'Enter your email',
           ),
         ),
-        const VerticalSpacer(size: SpacerSize.medium),
+        const VerticalSpacer(size: VSpacerSize.medium),
         ConstrainedBox(
           constraints: const BoxConstraints(maxWidth: 450),
           child: PasswordInput(controller: passwordController),
         ),
-        const VerticalSpacer(size: SpacerSize.large),
+        const VerticalSpacer(size: VSpacerSize.large),
         SizedBox(
           width: buttonWidth,
           height: buttonHeight,
@@ -49,13 +49,13 @@ class LoginForm extends StatelessWidget {
             onPressed: onLogin,
           ),
         ),
-        const VerticalSpacer(size: SpacerSize.medium),
+        const VerticalSpacer(size: VSpacerSize.medium),
         GoogleSignInButton(
           onPressed: onGoogleLogin,
           buttonWidth: buttonWidth,
           buttonHeight: buttonHeight,
         ),
-        const VerticalSpacer(size: SpacerSize.medium),
+        const VerticalSpacer(size: VSpacerSize.medium),
         TextButton(
           onPressed: () {
             // Handle forgot password

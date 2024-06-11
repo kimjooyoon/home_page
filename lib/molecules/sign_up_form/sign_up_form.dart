@@ -23,7 +23,7 @@ class SignUpForm extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        const VerticalSpacer(size: SpacerSize.medium),
+        const VerticalSpacer(size: VSpacerSize.medium),
         TextField(
           controller: nameController,
           decoration: InputDecoration(
@@ -36,7 +36,7 @@ class SignUpForm extends StatelessWidget {
             ),
           ),
         ),
-        const VerticalSpacer(size: SpacerSize.medium),
+        const VerticalSpacer(size: VSpacerSize.medium),
         TextField(
           controller: emailController,
           decoration: InputDecoration(
@@ -49,7 +49,7 @@ class SignUpForm extends StatelessWidget {
             ),
           ),
         ),
-        const VerticalSpacer(size: SpacerSize.medium),
+        const VerticalSpacer(size: VSpacerSize.medium),
         TextField(
           controller: passwordController,
           obscureText: true,
@@ -63,7 +63,7 @@ class SignUpForm extends StatelessWidget {
             ),
           ),
         ),
-        const VerticalSpacer(size: SpacerSize.large),
+        const VerticalSpacer(size: VSpacerSize.large),
         SizedBox(
           width: buttonWidth,
           height: buttonHeight,
@@ -86,7 +86,7 @@ class SignUpForm extends StatelessWidget {
             ),
           ),
         ),
-        const VerticalSpacer(size: SpacerSize.medium),
+        const VerticalSpacer(size: VSpacerSize.medium),
         GoogleSignInButton(
           onPressed: onGoogleSignUp,
           buttonWidth: buttonWidth,

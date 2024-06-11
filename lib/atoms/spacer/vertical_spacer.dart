@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:home_page/atoms/theme/custom_theme_extension.dart';
 
-enum SpacerSize { small, medium, large }
+enum VSpacerSize { small, medium, large }
 
 class VerticalSpacer extends StatelessWidget {
-  final SpacerSize size;
+  final VSpacerSize size;
 
   const VerticalSpacer({super.key, required this.size});
 
@@ -15,13 +15,13 @@ class VerticalSpacer extends StatelessWidget {
     // 기본값을 설정
     double spacing;
     switch (size) {
-      case SpacerSize.small:
+      case VSpacerSize.small:
         spacing = customTheme?.smallSpacing ?? 8.0;
         break;
-      case SpacerSize.medium:
+      case VSpacerSize.medium:
         spacing = customTheme?.mediumSpacing ?? 16.0;
         break;
-      case SpacerSize.large:
+      case VSpacerSize.large:
         spacing = customTheme?.largeSpacing ?? 32.0;
         break;
     }

@@ -7,25 +7,30 @@ class ProjectViewerOrganism extends StatelessWidget {
   final List<String> options;
   final List<Project> projects;
 
-  const ProjectViewerOrganism({super.key, required this.options, required this.projects});
-  
+  const ProjectViewerOrganism(
+      {super.key, required this.options, required this.projects});
+
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        ProjectSearchMolecule(options: options,),
-
-        ...projectListItemWidget(projects)
+        ProjectSearchMolecule(
+          options: options,
+        ),
+        ...projectListItemWidget(projects, context)
       ],
     );
   }
 
-  List<ProjectListItemMolecule> projectListItemWidget(List<Project> titles ) {
+  List<ProjectListItemMolecule> projectListItemWidget(List<Project> titles, BuildContext context) {
     List<ProjectListItemMolecule> projects = <ProjectListItemMolecule>[];
 
     for (var value in titles) {
       projects.add(
-        ProjectListItemMolecule(title: value.title)
+          ProjectListItemMolecule(
+              title: value.title,
+              onClick: () => value.move(context)
+          )
       );
     }
     return projects;
