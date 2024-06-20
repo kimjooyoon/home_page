@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:home_page/atoms/button/button_atom.dart';
 import 'package:home_page/atoms/input/custom_input.dart';
 import 'package:home_page/molecules/password/password.dart';
 import 'package:home_page/molecules/google_sign_in_button/google_sign_in_button.dart';
@@ -47,7 +48,7 @@ class LoginForm extends StatelessWidget {
         SizedBox(
           width: buttonWidth,
           height: buttonHeight,
-          child: CustomButton(
+          child: ButtonAtom(
             text: 'Login',
             onPressed: onLogin,
           ),

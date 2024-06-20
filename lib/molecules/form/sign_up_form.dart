@@ -1,5 +1,6 @@
 // molecules/sign_up_form.dart
 import 'package:flutter/material.dart';
+import 'package:home_page/atoms/button/button_atom.dart';
 import 'package:home_page/atoms/button/custom_button.dart';
 import 'package:home_page/atoms/field/sign_up_text_field.dart';
 import 'package:home_page/atoms/input/custom_input.dart';
@@ -39,7 +40,7 @@ class SignUpForm extends StatelessWidget {
           obscureText: true,
         ),
         const SizedBox(height: 16),
-        CustomButton(
+        ButtonAtom(
           onPressed: onSignUp,
           text: 'Sign Up',
         ),

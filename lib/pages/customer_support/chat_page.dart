@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:home_page/atoms/button/button_atom.dart';
 import 'package:home_page/organisms/lists/message_list.dart';
 import 'package:home_page/atoms/spacer/vertical_spacer.dart';
 import 'package:home_page/atoms/button/custom_button.dart';
@@ -26,7 +27,7 @@ class ChatPage extends StatelessWidget {
               ),
             ),
             const VerticalSpacer(size: VSpacerSize.small),
-            CustomButton(
+            ButtonAtom(
               text: 'Send Message',
               onPressed: () {
                 // 메일 전송 로직

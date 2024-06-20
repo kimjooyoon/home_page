@@ -44,14 +44,20 @@ class ProjectWorkListsItemMolecule extends StatelessWidget {
         ),
         const TextFieldsAtom(),
         // todo: <<actor: only admin>>
-        const Column(
+        Column(
           children: [
-            TextFieldsAtom(),
+            const TextFieldsAtom(),
             Row(
               children: [
                 // fixme: Work.Action.[]
-                ButtonAtom(),
-                ButtonAtom()
+                ButtonAtom(
+                  text: '',
+                  onPressed: () {},
+                ),
+                ButtonAtom(
+                  text: '',
+                  onPressed: () {},
+                )
               ],
             )
           ],
