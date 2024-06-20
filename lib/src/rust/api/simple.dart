@@ -4,7 +4,15 @@
 // ignore_for_file: invalid_use_of_internal_member, unused_import, unnecessary_import
 
 import '../frb_generated.dart';
+import 'models/profile.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 String greet({required String name}) =>
     RustLib.instance.api.crateApiSimpleGreet(name: name);
+
+Future<Profile> phone(
+        {required String name,
+        required String email,
+        required String phoneNumber}) =>
+    RustLib.instance.api.crateApiSimplePhone(
+        name: name, email: email, phoneNumber: phoneNumber);

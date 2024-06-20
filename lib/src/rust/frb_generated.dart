@@ -3,6 +3,7 @@
 
 // ignore_for_file: unused_import, unused_element, unnecessary_import, duplicate_ignore, invalid_use_of_internal_member, annotate_overrides, non_constant_identifier_names, curly_braces_in_flow_control_structures, prefer_const_literals_to_create_immutables, unused_field
 
+import 'api/models/profile.dart';
 import 'api/simple.dart';
 import 'dart:async';
 import 'dart:convert';
@@ -57,7 +58,7 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
   String get codegenVersion => '2.0.0-dev.40';
 
   @override
-  int get rustContentHash => -1918914929;
+  int get rustContentHash => -1830779818;
 
   static const kDefaultExternalLibraryLoaderConfig =
       ExternalLibraryLoaderConfig(
@@ -68,9 +69,22 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
 }
 
 abstract class RustLibApi extends BaseApi {
+  Future<Profile> crateApiModelsProfileProfileFromJson(
+      {required Map<String, String> j});
+
+  Profile crateApiModelsProfileProfileMock();
+
+  Future<Map<String, dynamic>> crateApiModelsProfileProfileToJson(
+      {required Profile that});
+
   String crateApiSimpleGreet({required String name});
 
   Future<void> crateApiSimpleInitApp();
+
+  Future<Profile> crateApiSimplePhone(
+      {required String name,
+      required String email,
+      required String phoneNumber});
 }
 
 class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
@@ -82,12 +96,87 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   });
 
   @override
+  Future<Profile> crateApiModelsProfileProfileFromJson(
+      {required Map<String, String> j}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_Map_String_String(j, serializer);
+        pdeCallFfi(generalizedFrbRustBinding, serializer,
+            funcId: 1, port: port_);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_profile,
+        decodeErrorData: null,
+      ),
+      constMeta: kCrateApiModelsProfileProfileFromJsonConstMeta,
+      argValues: [j],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta get kCrateApiModelsProfileProfileFromJsonConstMeta =>
+      const TaskConstMeta(
+        debugName: "profile_from_json",
+        argNames: ["j"],
+      );
+
+  @override
+  Profile crateApiModelsProfileProfileMock() {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 2)!;
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_profile,
+        decodeErrorData: null,
+      ),
+      constMeta: kCrateApiModelsProfileProfileMockConstMeta,
+      argValues: [],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta get kCrateApiModelsProfileProfileMockConstMeta =>
+      const TaskConstMeta(
+        debugName: "profile_mock",
+        argNames: [],
+      );
+
+  @override
+  Future<Map<String, dynamic>> crateApiModelsProfileProfileToJson(
+      {required Profile that}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_box_autoadd_profile(that, serializer);
+        pdeCallFfi(generalizedFrbRustBinding, serializer,
+            funcId: 3, port: port_);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_Map_String_dartabi,
+        decodeErrorData: null,
+      ),
+      constMeta: kCrateApiModelsProfileProfileToJsonConstMeta,
+      argValues: [that],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta get kCrateApiModelsProfileProfileToJsonConstMeta =>
+      const TaskConstMeta(
+        debugName: "profile_to_json",
+        argNames: ["that"],
+      );
+
+  @override
   String crateApiSimpleGreet({required String name}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_String(name, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 4)!;
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_String,
@@ -110,7 +199,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 2, port: port_);
+            funcId: 5, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -127,6 +216,49 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         argNames: [],
       );
 
+  @override
+  Future<Profile> crateApiSimplePhone(
+      {required String name,
+      required String email,
+      required String phoneNumber}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_String(name, serializer);
+        sse_encode_String(email, serializer);
+        sse_encode_String(phoneNumber, serializer);
+        pdeCallFfi(generalizedFrbRustBinding, serializer,
+            funcId: 6, port: port_);
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_profile,
+        decodeErrorData: null,
+      ),
+      constMeta: kCrateApiSimplePhoneConstMeta,
+      argValues: [name, email, phoneNumber],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta get kCrateApiSimplePhoneConstMeta => const TaskConstMeta(
+        debugName: "phone",
+        argNames: ["name", "email", "phoneNumber"],
+      );
+
+  @protected
+  Map<String, String> dco_decode_Map_String_String(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return Map.fromEntries(dco_decode_list_record_string_string(raw)
+        .map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
+  Map<String, dynamic> dco_decode_Map_String_dartabi(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return Map.fromEntries(dco_decode_list_record_string_dartabi(raw)
+        .map((e) => MapEntry(e.$1, e.$2)));
+  }
+
   @protected
   String dco_decode_String(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -134,9 +266,74 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  Profile dco_decode_box_autoadd_profile(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return dco_decode_profile(raw);
+  }
+
+  @protected
+  dynamic dco_decode_dartabi(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return raw;
+  }
+
+  @protected
   Uint8List dco_decode_list_prim_u_8_strict(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return raw as Uint8List;
+  }
+
+  @protected
+  List<(String, dynamic)> dco_decode_list_record_string_dartabi(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return (raw as List<dynamic>)
+        .map(dco_decode_record_string_dartabi)
+        .toList();
+  }
+
+  @protected
+  List<(String, String)> dco_decode_list_record_string_string(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return (raw as List<dynamic>).map(dco_decode_record_string_string).toList();
+  }
+
+  @protected
+  Profile dco_decode_profile(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    final arr = raw as List<dynamic>;
+    if (arr.length != 3)
+      throw Exception('unexpected arr length: expect 3 but see ${arr.length}');
+    return Profile(
+      name: dco_decode_String(arr[0]),
+      email: dco_decode_String(arr[1]),
+      phoneNumber: dco_decode_String(arr[2]),
+    );
+  }
+
+  @protected
+  (String, dynamic) dco_decode_record_string_dartabi(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2) {
+      throw Exception('Expected 2 elements, got ${arr.length}');
+    }
+    return (
+      dco_decode_String(arr[0]),
+      dco_decode_dartabi(arr[1]),
+    );
+  }
+
+  @protected
+  (String, String) dco_decode_record_string_string(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2) {
+      throw Exception('Expected 2 elements, got ${arr.length}');
+    }
+    return (
+      dco_decode_String(arr[0]),
+      dco_decode_String(arr[1]),
+    );
   }
 
   @protected
@@ -152,6 +349,22 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  Map<String, String> sse_decode_Map_String_String(
+      SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    var inner = sse_decode_list_record_string_string(deserializer);
+    return Map.fromEntries(inner.map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
+  Map<String, dynamic> sse_decode_Map_String_dartabi(
+      SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    var inner = sse_decode_list_record_string_dartabi(deserializer);
+    return Map.fromEntries(inner.map((e) => MapEntry(e.$1, e.$2)));
+  }
+
+  @protected
   String sse_decode_String(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var inner = sse_decode_list_prim_u_8_strict(deserializer);
@@ -159,10 +372,77 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  Profile sse_decode_box_autoadd_profile(SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return (sse_decode_profile(deserializer));
+  }
+
+  @protected
+  dynamic sse_decode_dartabi(SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    throw UnimplementedError(
+        'The type Dynamic(MirTypeDynamic) is not yet supported in serialized mode, please use full_dep mode, and feel free to create an issue');
+  }
+
+  @protected
   Uint8List sse_decode_list_prim_u_8_strict(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var len_ = sse_decode_i_32(deserializer);
     return deserializer.buffer.getUint8List(len_);
+  }
+
+  @protected
+  List<(String, dynamic)> sse_decode_list_record_string_dartabi(
+      SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+
+    var len_ = sse_decode_i_32(deserializer);
+    var ans_ = <(String, dynamic)>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(sse_decode_record_string_dartabi(deserializer));
+    }
+    return ans_;
+  }
+
+  @protected
+  List<(String, String)> sse_decode_list_record_string_string(
+      SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+
+    var len_ = sse_decode_i_32(deserializer);
+    var ans_ = <(String, String)>[];
+    for (var idx_ = 0; idx_ < len_; ++idx_) {
+      ans_.add(sse_decode_record_string_string(deserializer));
+    }
+    return ans_;
+  }
+
+  @protected
+  Profile sse_decode_profile(SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    var var_name = sse_decode_String(deserializer);
+    var var_email = sse_decode_String(deserializer);
+    var var_phoneNumber = sse_decode_String(deserializer);
+    return Profile(
+        name: var_name, email: var_email, phoneNumber: var_phoneNumber);
+  }
+
+  @protected
+  (String, dynamic) sse_decode_record_string_dartabi(
+      SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    var var_field0 = sse_decode_String(deserializer);
+    var var_field1 = sse_decode_dartabi(deserializer);
+    return (var_field0, var_field1);
+  }
+
+  @protected
+  (String, String) sse_decode_record_string_string(
+      SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    var var_field0 = sse_decode_String(deserializer);
+    var var_field1 = sse_decode_String(deserializer);
+    return (var_field0, var_field1);
   }
 
   @protected
@@ -189,9 +469,38 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  void sse_encode_Map_String_String(
+      Map<String, String> self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_list_record_string_string(
+        self.entries.map((e) => (e.key, e.value)).toList(), serializer);
+  }
+
+  @protected
+  void sse_encode_Map_String_dartabi(
+      Map<String, dynamic> self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_list_record_string_dartabi(
+        self.entries.map((e) => (e.key, e.value)).toList(), serializer);
+  }
+
+  @protected
   void sse_encode_String(String self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_list_prim_u_8_strict(utf8.encoder.convert(self), serializer);
+  }
+
+  @protected
+  void sse_encode_box_autoadd_profile(Profile self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_profile(self, serializer);
+  }
+
+  @protected
+  void sse_encode_dartabi(dynamic self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    throw UnimplementedError(
+        'The type Dynamic(MirTypeDynamic) is not yet supported in serialized mode, please use full_dep mode, and feel free to create an issue');
   }
 
   @protected
@@ -200,6 +509,50 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_i_32(self.length, serializer);
     serializer.buffer.putUint8List(self);
+  }
+
+  @protected
+  void sse_encode_list_record_string_dartabi(
+      List<(String, dynamic)> self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      sse_encode_record_string_dartabi(item, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_list_record_string_string(
+      List<(String, String)> self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_i_32(self.length, serializer);
+    for (final item in self) {
+      sse_encode_record_string_string(item, serializer);
+    }
+  }
+
+  @protected
+  void sse_encode_profile(Profile self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_String(self.name, serializer);
+    sse_encode_String(self.email, serializer);
+    sse_encode_String(self.phoneNumber, serializer);
+  }
+
+  @protected
+  void sse_encode_record_string_dartabi(
+      (String, dynamic) self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_String(self.$1, serializer);
+    sse_encode_dartabi(self.$2, serializer);
+  }
+
+  @protected
+  void sse_encode_record_string_string(
+      (String, String) self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    sse_encode_String(self.$1, serializer);
+    sse_encode_String(self.$2, serializer);
   }
 
   @protected

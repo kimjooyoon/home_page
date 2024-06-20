@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:home_page/atoms/button/button_atom.dart';
 import 'package:home_page/organisms/lists/message_list.dart';
 import 'package:home_page/atoms/spacer/vertical_spacer.dart';
-import 'package:home_page/atoms/button/custom_button.dart';
 
 class ChatPage extends StatelessWidget {
   const ChatPage({super.key});

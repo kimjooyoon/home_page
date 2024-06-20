@@ -3,6 +3,7 @@
 
 // ignore_for_file: unused_import, unused_element, unnecessary_import, duplicate_ignore, invalid_use_of_internal_member, annotate_overrides, non_constant_identifier_names, curly_braces_in_flow_control_structures, prefer_const_literals_to_create_immutables, unused_field
 
+import 'api/models/profile.dart';
 import 'api/simple.dart';
 import 'dart:async';
 import 'dart:convert';
@@ -19,10 +20,37 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   });
 
   @protected
+  Map<String, String> dco_decode_Map_String_String(dynamic raw);
+
+  @protected
+  Map<String, dynamic> dco_decode_Map_String_dartabi(dynamic raw);
+
+  @protected
   String dco_decode_String(dynamic raw);
 
   @protected
+  Profile dco_decode_box_autoadd_profile(dynamic raw);
+
+  @protected
+  dynamic dco_decode_dartabi(dynamic raw);
+
+  @protected
   Uint8List dco_decode_list_prim_u_8_strict(dynamic raw);
+
+  @protected
+  List<(String, dynamic)> dco_decode_list_record_string_dartabi(dynamic raw);
+
+  @protected
+  List<(String, String)> dco_decode_list_record_string_string(dynamic raw);
+
+  @protected
+  Profile dco_decode_profile(dynamic raw);
+
+  @protected
+  (String, dynamic) dco_decode_record_string_dartabi(dynamic raw);
+
+  @protected
+  (String, String) dco_decode_record_string_string(dynamic raw);
 
   @protected
   int dco_decode_u_8(dynamic raw);
@@ -31,10 +59,43 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void dco_decode_unit(dynamic raw);
 
   @protected
+  Map<String, String> sse_decode_Map_String_String(
+      SseDeserializer deserializer);
+
+  @protected
+  Map<String, dynamic> sse_decode_Map_String_dartabi(
+      SseDeserializer deserializer);
+
+  @protected
   String sse_decode_String(SseDeserializer deserializer);
 
   @protected
+  Profile sse_decode_box_autoadd_profile(SseDeserializer deserializer);
+
+  @protected
+  dynamic sse_decode_dartabi(SseDeserializer deserializer);
+
+  @protected
   Uint8List sse_decode_list_prim_u_8_strict(SseDeserializer deserializer);
+
+  @protected
+  List<(String, dynamic)> sse_decode_list_record_string_dartabi(
+      SseDeserializer deserializer);
+
+  @protected
+  List<(String, String)> sse_decode_list_record_string_string(
+      SseDeserializer deserializer);
+
+  @protected
+  Profile sse_decode_profile(SseDeserializer deserializer);
+
+  @protected
+  (String, dynamic) sse_decode_record_string_dartabi(
+      SseDeserializer deserializer);
+
+  @protected
+  (String, String) sse_decode_record_string_string(
+      SseDeserializer deserializer);
 
   @protected
   int sse_decode_u_8(SseDeserializer deserializer);
@@ -49,11 +110,44 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   bool sse_decode_bool(SseDeserializer deserializer);
 
   @protected
+  void sse_encode_Map_String_String(
+      Map<String, String> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_Map_String_dartabi(
+      Map<String, dynamic> self, SseSerializer serializer);
+
+  @protected
   void sse_encode_String(String self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_box_autoadd_profile(Profile self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_dartabi(dynamic self, SseSerializer serializer);
 
   @protected
   void sse_encode_list_prim_u_8_strict(
       Uint8List self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_record_string_dartabi(
+      List<(String, dynamic)> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_list_record_string_string(
+      List<(String, String)> self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_profile(Profile self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_record_string_dartabi(
+      (String, dynamic) self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_record_string_string(
+      (String, String) self, SseSerializer serializer);
 
   @protected
   void sse_encode_u_8(int self, SseSerializer serializer);

@@ -1,8 +1,8 @@
 // pages/profile_page.dart
 import 'package:flutter/material.dart';
+import 'package:home_page/src/rust/api/models/profile.dart';
 import 'package:home_page/templates/base/base_template.dart';
 import 'package:home_page/organisms/form/profile_form.dart';
-import 'package:home_page/models/profile/profile.dart';
 import 'package:home_page/services/profile/profile_service.dart';
 
 class ProfilePage extends StatefulWidget {

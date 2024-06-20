@@ -1,6 +1,6 @@
+import 'package:home_page/src/rust/api/models/profile.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-import 'package:home_page/models/profile/profile.dart';
 import 'package:home_page/config/env.dart';
 import 'package:home_page/data/profile/mock_profile.dart';
 
@@ -14,7 +14,7 @@ class ProfileService {
       final response = await http.get(Uri.parse('$baseUrl/profile'));
 
       if (response.statusCode == 200) {
-        return Profile.fromJson(json.decode(response.body));
+        return Profile.fromJson(j:json.decode(response.body));
       } else {
         throw Exception('Failed to load profile');
       }
