@@ -5,7 +5,8 @@ class TransactionList extends StatelessWidget {
   final int itemCount;
   final VoidCallback onEdit;
 
-  const TransactionList({super.key, required this.itemCount, required this.onEdit});
+  const TransactionList(
+      {super.key, required this.itemCount, required this.onEdit});
 
   @override
   Widget build(BuildContext context) {

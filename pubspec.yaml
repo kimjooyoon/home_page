@@ -42,6 +42,10 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.6
   url_launcher: ^6.3.0
+  flutter_inappwebview: ^6.0.0
+  rust_lib_home_page:
+    path: rust_builder
+  flutter_rust_bridge: 2.0.0-dev.40
 
 dev_dependencies:
   flutter_test:
@@ -53,6 +57,8 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^4.0.0
+  integration_test:
+    sdk: flutter
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

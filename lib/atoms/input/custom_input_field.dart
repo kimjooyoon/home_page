@@ -20,20 +20,24 @@ class CustomInputField extends StatelessWidget {
       obscureText: obscureText,
       decoration: InputDecoration(
         labelText: labelText,
-        fillColor: theme.inputDecorationTheme.fillColor ?? Colors.white.withOpacity(0.8),
+        fillColor: theme.inputDecorationTheme.fillColor ??
+            Colors.white.withOpacity(0.8),
         filled: true,
-        border: theme.inputDecorationTheme.border ?? OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8.0),
-          borderSide: BorderSide.none,
-        ),
-        enabledBorder: theme.inputDecorationTheme.enabledBorder ?? OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8.0),
-          borderSide: BorderSide.none,
-        ),
-        focusedBorder: theme.inputDecorationTheme.focusedBorder ?? OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8.0),
-          borderSide: BorderSide.none,
-        ),
+        border: theme.inputDecorationTheme.border ??
+            OutlineInputBorder(
+              borderRadius: BorderRadius.circular(8.0),
+              borderSide: BorderSide.none,
+            ),
+        enabledBorder: theme.inputDecorationTheme.enabledBorder ??
+            OutlineInputBorder(
+              borderRadius: BorderRadius.circular(8.0),
+              borderSide: BorderSide.none,
+            ),
+        focusedBorder: theme.inputDecorationTheme.focusedBorder ??
+            OutlineInputBorder(
+              borderRadius: BorderRadius.circular(8.0),
+              borderSide: BorderSide.none,
+            ),
       ),
       style: theme.textTheme.bodyLarge,
     );

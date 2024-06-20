@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:home_page/molecules/login_form/login_form.dart';
 import 'package:home_page/molecules/sign_up_form/sign_up_form.dart';
+import 'package:home_page/src/rust/api/simple.dart';
 
 class AuthForms extends StatelessWidget {
   final VoidCallback onLogin;
@@ -8,7 +9,8 @@ class AuthForms extends StatelessWidget {
   final VoidCallback onGoogleLogin;
   final VoidCallback onGoogleSignUp;
 
-  const AuthForms({super.key,
+  const AuthForms({
+    super.key,
     required this.onLogin,
     required this.onSignUp,
     required this.onGoogleLogin,

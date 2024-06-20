@@ -21,12 +21,14 @@ class CustomButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(8.0), // 또는 다른 적절한 값을 사용
           side: BorderSide(color: theme.dividerColor),
         ),
-        padding: EdgeInsets.symmetric(vertical: theme.buttonTheme.padding.vertical),
+        padding:
+            EdgeInsets.symmetric(vertical: theme.buttonTheme.padding.vertical),
       ),
       onPressed: onPressed,
       child: Text(
         text,
-        style: theme.textTheme.labelLarge?.copyWith(color: theme.textTheme.bodyLarge?.color),
+        style: theme.textTheme.labelLarge
+            ?.copyWith(color: theme.textTheme.bodyLarge?.color),
       ),
     );
   }

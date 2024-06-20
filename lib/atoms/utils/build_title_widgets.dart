@@ -1,7 +1,8 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
-Widget buildTitleWidgets(double value, TitleMeta meta, {bool isLeftTitle = false, required Color textColor}) {
+Widget buildTitleWidgets(double value, TitleMeta meta,
+    {bool isLeftTitle = false, required Color textColor}) {
   final style = TextStyle(
     color: textColor,
     fontWeight: FontWeight.bold,

@@ -14,7 +14,9 @@ class RadarChartMolecule extends StatelessWidget {
         const Text('Radar Chart Example'),
         SizedBox(
           height: 200,
-          child: RadarChartAtom(dataSets: dataProvider.getRadarChartData(),),
+          child: RadarChartAtom(
+            dataSets: dataProvider.getRadarChartData(),
+          ),
         ),
       ],
     );

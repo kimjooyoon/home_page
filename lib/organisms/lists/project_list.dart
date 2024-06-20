@@ -6,7 +6,8 @@ class ProjectList extends StatelessWidget {
   final List<Project> projects;
   final Function(String) onProjectTap;
 
-  const ProjectList({super.key, required this.projects, required this.onProjectTap});
+  const ProjectList(
+      {super.key, required this.projects, required this.onProjectTap});
 
   @override
   Widget build(BuildContext context) {

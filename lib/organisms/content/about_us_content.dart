@@ -14,9 +14,13 @@ class AboutUsContent extends StatelessWidget {
           Section(title: 'Technology Stack', content: 'Technology Stack Cards'),
           Section(title: 'Solutions & Projects', content: 'Projects Cards'),
           Section(title: 'Services', content: 'Services Description'),
-          Section(title: 'Solution/Service Preview', content: 'Solution/Service Preview'),
+          Section(
+              title: 'Solution/Service Preview',
+              content: 'Solution/Service Preview'),
           Section(title: 'Vision', content: 'Vision Description'),
-          Section(title: 'Commitment to Customers', content: 'Commitment Description'),
+          Section(
+              title: 'Commitment to Customers',
+              content: 'Commitment Description'),
           Section(title: 'Beliefs', content: 'Beliefs Description'),
         ],
       ),

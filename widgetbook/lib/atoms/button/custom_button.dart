@@ -5,5 +5,8 @@ import 'package:home_page/atoms/button/custom_button.dart';
 
 @widgetbook.UseCase(name: 'Default', type: CustomButton)
 Widget buildCustomButtonUseCase(BuildContext context) {
-  return CustomButton(text: "text", onPressed: () {  },);
+  return CustomButton(
+    text: "text",
+    onPressed: () {},
+  );
 }

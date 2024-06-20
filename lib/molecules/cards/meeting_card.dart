@@ -16,7 +16,9 @@ class MeetingCard extends StatelessWidget {
         subtitle: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            MeetingSubtitle(subtitle: 'Date: ${DateTime.now().subtract(Duration(days: index))}'),
+            MeetingSubtitle(
+                subtitle:
+                    'Date: ${DateTime.now().subtract(Duration(days: index))}'),
             const MeetingSubtitle(subtitle: 'Attendees: Attendee names here'),
             const MeetingSubtitle(subtitle: 'Details: Meeting details here'),
           ],

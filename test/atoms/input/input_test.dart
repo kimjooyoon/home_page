@@ -19,7 +19,8 @@ void main() {
     expect(find.text('Test Label'), findsOneWidget);
   });
 
-  testWidgets('CustomInput updates controller text on input', (WidgetTester tester) async {
+  testWidgets('CustomInput updates controller text on input',
+      (WidgetTester tester) async {
     final controller = TextEditingController();
     await tester.pumpWidget(
       MaterialApp(

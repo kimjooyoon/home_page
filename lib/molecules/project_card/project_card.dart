@@ -4,7 +4,8 @@ class ProjectCard extends StatelessWidget {
   final String projectName;
   final double progress;
 
-  const ProjectCard({super.key, required this.projectName, required this.progress});
+  const ProjectCard(
+      {super.key, required this.projectName, required this.progress});
 
   @override
   Widget build(BuildContext context) {

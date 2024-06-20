@@ -5,7 +5,8 @@ class CustomerList extends StatelessWidget {
   final int itemCount;
   final VoidCallback onEdit;
 
-  const CustomerList({super.key, required this.itemCount, required this.onEdit});
+  const CustomerList(
+      {super.key, required this.itemCount, required this.onEdit});
 
   @override
   Widget build(BuildContext context) {

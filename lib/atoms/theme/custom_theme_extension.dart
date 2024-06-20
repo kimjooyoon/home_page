@@ -25,7 +25,8 @@ class CustomThemeExtension extends ThemeExtension<CustomThemeExtension> {
   }
 
   @override
-  CustomThemeExtension lerp(ThemeExtension<CustomThemeExtension>? other, double t) {
+  CustomThemeExtension lerp(
+      ThemeExtension<CustomThemeExtension>? other, double t) {
     if (other is! CustomThemeExtension) {
       return this;
     }

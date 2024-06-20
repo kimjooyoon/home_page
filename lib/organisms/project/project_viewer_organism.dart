@@ -22,16 +22,13 @@ class ProjectViewerOrganism extends StatelessWidget {
     );
   }
 
-  List<ProjectListItemMolecule> projectListItemWidget(List<Project> titles, BuildContext context) {
+  List<ProjectListItemMolecule> projectListItemWidget(
+      List<Project> titles, BuildContext context) {
     List<ProjectListItemMolecule> projects = <ProjectListItemMolecule>[];
 
     for (var value in titles) {
-      projects.add(
-          ProjectListItemMolecule(
-              title: value.title,
-              onClick: () => value.move(context)
-          )
-      );
+      projects.add(ProjectListItemMolecule(
+          title: value.title, onClick: () => value.move(context)));
     }
     return projects;
   }

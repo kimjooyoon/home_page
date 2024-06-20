@@ -6,7 +6,8 @@ class ProfileInfoField extends StatelessWidget {
   final TextEditingController controller;
   final String labelText;
 
-  const ProfileInfoField({super.key, required this.controller, required this.labelText});
+  const ProfileInfoField(
+      {super.key, required this.controller, required this.labelText});
 
   @override
   Widget build(BuildContext context) {
@@ -19,5 +20,3 @@ class ProfileInfoField extends StatelessWidget {
     );
   }
 }
-
-

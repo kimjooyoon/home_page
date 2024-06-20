@@ -14,7 +14,9 @@ class PieChartMolecule extends StatelessWidget {
         const Text('Pie Chart Example'),
         SizedBox(
           height: 200,
-          child: PieChartAtom(sections: dataProvider.getPieChartData(),),
+          child: PieChartAtom(
+            sections: dataProvider.getPieChartData(),
+          ),
         ),
       ],
     );

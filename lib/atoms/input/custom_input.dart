@@ -41,7 +41,8 @@ class CustomInput extends StatelessWidget {
           borderRadius: BorderRadius.circular(8.0),
         ),
       ),
-      style: theme.textTheme.bodyLarge?.copyWith(color: theme.textTheme.bodyLarge?.color),
+      style: theme.textTheme.bodyLarge
+          ?.copyWith(color: theme.textTheme.bodyLarge?.color),
       validator: validator,
       onChanged: onChanged,
     );

@@ -24,7 +24,8 @@ class PieChartAtom extends StatelessWidget {
               fontSize: 16,
             ),
             badgeWidget: section.badgeWidget,
-            badgePositionPercentageOffset: section.badgePositionPercentageOffset,
+            badgePositionPercentageOffset:
+                section.badgePositionPercentageOffset,
           );
         }).toList(),
       ),

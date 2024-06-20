@@ -47,7 +47,8 @@ class DesignTokens {
 
   // Label and hint text styles for dark mode and light mode
   static const TextStyle darkLabelTextStyle = TextStyle(color: darkTextColor);
-  static const TextStyle darkHintTextStyle = TextStyle(color: darkHintTextColor);
+  static const TextStyle darkHintTextStyle =
+      TextStyle(color: darkHintTextColor);
   static const TextStyle darkBodyText1 = TextStyle(
     fontFamily: 'Roboto',
     fontSize: 16,
@@ -55,7 +56,8 @@ class DesignTokens {
   );
 
   static const TextStyle lightLabelTextStyle = TextStyle(color: lightTextColor);
-  static const TextStyle lightHintTextStyle = TextStyle(color: lightHintTextColor);
+  static const TextStyle lightHintTextStyle =
+      TextStyle(color: lightHintTextColor);
   static const TextStyle lightBodyText1 = TextStyle(
     fontFamily: 'Roboto',
     fontSize: 16,

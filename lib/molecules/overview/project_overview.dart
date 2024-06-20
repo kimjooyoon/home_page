@@ -6,7 +6,8 @@ class ProjectOverview extends StatelessWidget {
   final String projectName;
   final double progress;
 
-  const ProjectOverview({super.key, required this.projectName, required this.progress});
+  const ProjectOverview(
+      {super.key, required this.projectName, required this.progress});
 
   @override
   Widget build(BuildContext context) {

@@ -29,9 +29,13 @@ class ProfileForm extends StatelessWidget {
         const SizedBox(height: 20),
         ProfileInfoField(controller: nameController, labelText: 'Name'),
         ProfileInfoField(controller: emailController, labelText: 'Email'),
-        ProfileInfoField(controller: phoneNumberController, labelText: 'Phone Number'),
+        ProfileInfoField(
+            controller: phoneNumberController, labelText: 'Phone Number'),
         const SizedBox(height: 32),
-        CustomButton(onPressed: onSave, text: 'Save',),
+        CustomButton(
+          onPressed: onSave,
+          text: 'Save',
+        ),
       ],
     );
   }

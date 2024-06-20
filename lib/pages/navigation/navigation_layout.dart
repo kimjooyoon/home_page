@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:home_page/models/project/project.dart';
 import 'package:home_page/models/token.dart';
 import 'package:home_page/pages/home/home.dart';
 import 'package:home_page/pages/project/project_page.dart';
@@ -70,8 +69,19 @@ class NavigationLayoutState extends State<NavigationLayout> {
 
   @override
   Widget build(BuildContext context) {
-
-    final Token args = ModalRoute.of(context)!.settings.arguments as Token;
+    final Token args;
+    if (ModalRoute.of(context) != null &&
+        ModalRoute.of(context)!.settings.arguments != null) {
+      Token tmp;
+      try {
+        tmp = ModalRoute.of(context)!.settings.arguments! as Token;
+      } catch (e) {
+        tmp = Token(token: "not found");
+      }
+      args = tmp;
+    } else {
+      args = Token(token: "not found");
+    }
     String title = 'Home Page, ${args.token}';
 
     return Scaffold(

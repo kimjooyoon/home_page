@@ -3,4 +3,3 @@ class ProjectSearchModel {
 
   ProjectSearchModel({required this.options});
 }
-

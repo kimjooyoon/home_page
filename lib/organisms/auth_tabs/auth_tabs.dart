@@ -9,7 +9,8 @@ class AuthTabs extends StatefulWidget {
   AuthTabsState createState() => AuthTabsState();
 }
 
-class AuthTabsState extends State<AuthTabs> with SingleTickerProviderStateMixin {
+class AuthTabsState extends State<AuthTabs>
+    with SingleTickerProviderStateMixin {
   late TabController _tabController;
 
   @override
@@ -42,13 +43,15 @@ class AuthTabsState extends State<AuthTabs> with SingleTickerProviderStateMixin 
             controller: _tabController,
             children: [
               LoginForm(
-                onLogin: () => Navigator.pushReplacementNamed(context, '/navigation'),
+                onLogin: () =>
+                    Navigator.pushReplacementNamed(context, '/navigation'),
                 onGoogleLogin: () {
                   // Google 로그인 로직
                 },
               ),
               SignUpForm(
-                onSignUp: () => Navigator.pushReplacementNamed(context, '/navigation'),
+                onSignUp: () =>
+                    Navigator.pushReplacementNamed(context, '/navigation'),
                 onGoogleSignUp: () {
                   // Google 로그인 로직
                 },

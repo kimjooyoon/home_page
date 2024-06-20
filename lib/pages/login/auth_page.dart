@@ -24,7 +24,7 @@ class AuthPage extends StatelessWidget {
       },
       onSignUp: () {
         onLogin();
-        Navigator.pushReplacementNamed(context, '/navigation');
+        Navigator.pushReplacementNamed(context, '/google');
       },
       onGoogleLogin: () {
         onLogin();

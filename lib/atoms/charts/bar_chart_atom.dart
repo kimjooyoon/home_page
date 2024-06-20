@@ -37,7 +37,8 @@ class BarChartAtom extends StatelessWidget {
           leftTitles: AxisTitles(
             sideTitles: SideTitles(
               showTitles: true,
-              getTitlesWidget: (value, meta) => buildTitleWidgets(value, meta, isLeftTitle: true, textColor: textColor),
+              getTitlesWidget: (value, meta) => buildTitleWidgets(value, meta,
+                  isLeftTitle: true, textColor: textColor),
               interval: 1,
               reservedSize: 28,
             ),
@@ -45,12 +46,15 @@ class BarChartAtom extends StatelessWidget {
           bottomTitles: AxisTitles(
             sideTitles: SideTitles(
               showTitles: true,
-              getTitlesWidget: (value, meta) => buildTitleWidgets(value, meta, textColor: textColor),
+              getTitlesWidget: (value, meta) =>
+                  buildTitleWidgets(value, meta, textColor: textColor),
               interval: 1,
             ),
           ),
-          topTitles: const AxisTitles(sideTitles: SideTitles(showTitles: false)),
-          rightTitles: const AxisTitles(sideTitles: SideTitles(showTitles: false)),
+          topTitles:
+              const AxisTitles(sideTitles: SideTitles(showTitles: false)),
+          rightTitles:
+              const AxisTitles(sideTitles: SideTitles(showTitles: false)),
         ),
         borderData: FlBorderData(
           show: true,

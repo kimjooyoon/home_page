@@ -17,7 +17,9 @@ class TransactionCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             TransactionText(content: 'Amount: \$${index * 100}'),
-            TransactionText(content: 'Date: ${DateTime.now().subtract(Duration(days: index))}'),
+            TransactionText(
+                content:
+                    'Date: ${DateTime.now().subtract(Duration(days: index))}'),
             const TransactionText(content: 'Details: Transaction details here'),
             TransactionText(content: 'Assigned To: Employee $index'),
           ],

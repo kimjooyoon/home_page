@@ -14,7 +14,9 @@ class ScatterChartMolecule extends StatelessWidget {
         const Text('Scatter Chart Example'),
         SizedBox(
           height: 200,
-          child: ScatterChartAtom(scatterSpots: dataProvider.getScatterChartData(),),
+          child: ScatterChartAtom(
+            scatterSpots: dataProvider.getScatterChartData(),
+          ),
         ),
       ],
     );

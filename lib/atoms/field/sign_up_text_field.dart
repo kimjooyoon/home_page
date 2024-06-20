@@ -5,7 +5,8 @@ class SignUpTextField extends StatelessWidget {
   final String labelText;
   final bool obscureText;
 
-  const SignUpTextField({super.key, required this.labelText, this.obscureText = false});
+  const SignUpTextField(
+      {super.key, required this.labelText, this.obscureText = false});
 
   @override
   Widget build(BuildContext context) {

@@ -21,7 +21,9 @@ class ProjectWorkListsItemMolecule extends StatelessWidget {
             Row(
               children: [
                 // title atom
-                TitleAtom(title: title,), // fixme: work.TitleInfo
+                TitleAtom(
+                  title: title,
+                ), // fixme: work.TitleInfo
                 const Row(
                   children: [
                     // fixme: iterator by work.Tags { icon_url:"", text:"", action:()=>{} }
