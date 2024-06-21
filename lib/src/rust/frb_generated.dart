@@ -58,7 +58,7 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
   String get codegenVersion => '2.0.0-dev.40';
 
   @override
-  int get rustContentHash => -1830779818;
+  int get rustContentHash => -138387224;
 
   static const kDefaultExternalLibraryLoaderConfig =
       ExternalLibraryLoaderConfig(
@@ -69,12 +69,17 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
 }
 
 abstract class RustLibApi extends BaseApi {
-  Future<Profile> crateApiModelsProfileProfileFromJson(
+  Profile crateApiModelsProfileProfileFromJson(
       {required Map<String, String> j});
 
   Profile crateApiModelsProfileProfileMock();
 
-  Future<Map<String, dynamic>> crateApiModelsProfileProfileToJson(
+  Profile crateApiModelsProfileProfileNew(
+      {required String name,
+      required String email,
+      required String phoneNumber});
+
+  Map<String, dynamic> crateApiModelsProfileProfileToJson(
       {required Profile that});
 
   String crateApiSimpleGreet({required String name});
@@ -96,14 +101,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   });
 
   @override
-  Future<Profile> crateApiModelsProfileProfileFromJson(
+  Profile crateApiModelsProfileProfileFromJson(
       {required Map<String, String> j}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_Map_String_String(j, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1, port: port_);
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1)!;
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_profile,
@@ -145,14 +149,42 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<Map<String, dynamic>> crateApiModelsProfileProfileToJson(
+  Profile crateApiModelsProfileProfileNew(
+      {required String name,
+      required String email,
+      required String phoneNumber}) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
+        final serializer = SseSerializer(generalizedFrbRustBinding);
+        sse_encode_String(name, serializer);
+        sse_encode_String(email, serializer);
+        sse_encode_String(phoneNumber, serializer);
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 3)!;
+      },
+      codec: SseCodec(
+        decodeSuccessData: sse_decode_profile,
+        decodeErrorData: null,
+      ),
+      constMeta: kCrateApiModelsProfileProfileNewConstMeta,
+      argValues: [name, email, phoneNumber],
+      apiImpl: this,
+    ));
+  }
+
+  TaskConstMeta get kCrateApiModelsProfileProfileNewConstMeta =>
+      const TaskConstMeta(
+        debugName: "profile_new",
+        argNames: ["name", "email", "phoneNumber"],
+      );
+
+  @override
+  Map<String, dynamic> crateApiModelsProfileProfileToJson(
       {required Profile that}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_box_autoadd_profile(that, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 3, port: port_);
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 4)!;
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_Map_String_dartabi,
@@ -176,7 +208,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_String(name, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 4)!;
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 5)!;
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_String,
@@ -199,7 +231,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       callFfi: (port_) {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 5, port: port_);
+            funcId: 6, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_unit,
@@ -228,7 +260,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_String(email, serializer);
         sse_encode_String(phoneNumber, serializer);
         pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 6, port: port_);
+            funcId: 7, port: port_);
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_profile,
@@ -303,7 +335,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     final arr = raw as List<dynamic>;
     if (arr.length != 3)
       throw Exception('unexpected arr length: expect 3 but see ${arr.length}');
-    return Profile(
+    return Profile.raw(
       name: dco_decode_String(arr[0]),
       email: dco_decode_String(arr[1]),
       phoneNumber: dco_decode_String(arr[2]),
@@ -423,7 +455,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var var_name = sse_decode_String(deserializer);
     var var_email = sse_decode_String(deserializer);
     var var_phoneNumber = sse_decode_String(deserializer);
-    return Profile(
+    return Profile.raw(
         name: var_name, email: var_email, phoneNumber: var_phoneNumber);
   }
 

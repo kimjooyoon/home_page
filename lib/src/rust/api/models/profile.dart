@@ -11,19 +11,26 @@ class Profile {
   final String email;
   final String phoneNumber;
 
-  const Profile({
+  const Profile.raw({
     required this.name,
     required this.email,
     required this.phoneNumber,
   });
 
-  static Future<Profile> fromJson({required Map<String, String> j}) =>
+  static Profile fromJson({required Map<String, String> j}) =>
       RustLib.instance.api.crateApiModelsProfileProfileFromJson(j: j);
 
   static Profile mock() =>
       RustLib.instance.api.crateApiModelsProfileProfileMock();
 
-  Future<Map<String, dynamic>> toJson() =>
+  factory Profile(
+          {required String name,
+          required String email,
+          required String phoneNumber}) =>
+      RustLib.instance.api.crateApiModelsProfileProfileNew(
+          name: name, email: email, phoneNumber: phoneNumber);
+
+  Map<String, dynamic> toJson() =>
       RustLib.instance.api.crateApiModelsProfileProfileToJson(
         that: this,
       );
